@@ -1,0 +1,49 @@
+/* given a reasonable screen width, place tabs & url bar next to each other */
+@media(min-width: 960px) and (orientation: landscape) {
+  /* the whole top UI */
+  #navigator-toolbox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  /* url/tools */
+  #nav-bar {
+    order: -1;
+    max-width: min-content;
+  }
+  /* tabs */
+  #titlebar {
+    flex-grow: 1;
+  }
+  /* bookmarks */
+  #PersonalToolbar {
+    width: 100%;
+  }
+}
+* {
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+#urlbar-container {
+  --urlbar-margin-inline: 0;
+}
+/* tool/extension icons */
+.toolbarbutton-1,
+.chromeclass-toolbar-additional,
+/*
+ * pinned tabs remain in the same container as unpinned tabs
+ * so messing with them borks their layout
+ */
+.tabbrowser-tab:not([pinned])
+{
+  margin: 0 !important;
+  padding: 0 !important;
+}
+/* scroll buttons for when tabs overflow */
+#scrollbutton-up,
+#scrollbutton-down {
+  min-width: 2rem;
+}
+.bookmark-item {
+  margin: 0 !important;
+}

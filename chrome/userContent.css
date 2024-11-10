@@ -1,0 +1,153 @@
+/* working as of 2024-11-10 */
+@-moz-document domain("pornhub.com") {
+  body {
+    font-family: Comfortaa !important;
+    text-transform: lowercase;
+
+    --img-size: 5rem;
+    --vid-size: 8rem;
+    --vid-size-wide: 16rem;
+    --preview-w: 8rem;
+    --preview-h: 4.5rem;
+  }
+  .networkBar,          /* topmost bar */
+  #headerWrapper,       /* header search bar row */
+  #headerContainer,     /* ^ when browser width is small */
+  #headerMainMenuInner, /* header nav bar row */
+  #leftMenuScroll,      /* topleft burger dropdown */
+  #searchesWrapper,     /* search dropdown */
+  #searchSuggestions,   /* search dropdown when search has input */
+  #notificationBox,     /* notifs dropdown */
+  #profileMenuDropdown, /* user dropdown */
+  .wideDropdown,        /* navbar dropdown */
+  .leftPanel,           /* navbar CATEGORIES dropdown left panel */
+  .leftPanel::before,   /* area surrounding ^ */
+  h3,                   /* navbar CATEGORIES dropdown headers, video page side bar header */
+  .abAlertInner,        /* adblock popup */
+  #footer,
+  .videoPreviewBg,      /* video list item bg */
+  /** search page */
+  .sidebar_wrapper,
+  .channelCard, /* matching channel search result */
+  /** view_video page */
+  .playlist-bar,                 /* playlist titlebar */
+  .playlist-bar-tray,            /* playlist */
+  .section_bar_sidebar,          /* space next to sidebar headerwhich for some reason is separate from "Related Porn" */
+  .video-wrapper,                /* overall bg, affects related vids/comment section too */
+  .playerFlvContainer,           /* main vid bg when playing */
+  .mgp_videoPoster,              /* main vid bg(not playing) */
+  .title-container,              /* main vid title */
+  .video-actions-container,      /* featured models/subscribe btn area */
+  #psRolloverContainer,          /* dropdown on featured model hover */
+  .avatarPopOver,                /* dropdown on comment/channel hover */
+  #under-player-playlists > div, /* playlist titlebar below suggested vids */
+  /** playlist page */
+  #playlistTopHeader,
+  #userPlaylistActions,
+  .playlist-action,
+  .playlistSectionWrapper,
+  /** gif page */
+  .relatedGif > .title,
+  #gifImageSection,
+  #gifInfoSection,
+  /** photo page */
+  #thumbSlider,
+  .thumbSliderContent,
+  #photoImageSection,
+  /** album page */
+  #photoAlbumUpperblock,
+  #albumInfoContainer,
+  .photoBlockBox,
+  /** model page */
+  .topProfileHeader,
+  .mainMenu,
+  .stream,
+  .feedItemSection,
+  .actionsWrap,
+  body {
+    background: maroon !important;
+  }
+  img:not(
+          .networkTab > img,      /* network bar sites dropdown logos */
+          .searches > img,        /* search dropdown pfp */
+          #loadingDiv > img,      /* notif dropdown loading icon */
+          .userProfileLink > img, /* notif dropdown pfp */
+          .smallAvatar,           /* header user pfp */
+          .catIcon,               /* search page sidebar icons */
+          .userAvatar > img,      /* view_video page model pfp */
+          .avatar,                /* featured model pfp */
+          .avatarTrigger,         /* comment section pfp */
+          .modelAvatar            /* contest_hub page model pfp */
+         )
+  {
+    min-width: 0 !important;
+    min-height: 0 !important;
+    width: var(--img-size) !important;
+    height: auto !important;
+    margin: auto !important;
+  }
+  video:not(
+            .videoPreviewEl, /* hover preview */
+            .playerFlvContainer.wide video,          /* widescreen */
+            .playerFlvContainer.mgp_fullscreen video /* fullscreen */
+           ) {
+    width: var(--vid-size) !important;
+  }
+  .playerFlvContainer.wide video {
+    width: var(--vid-size-wide) !important;
+  }
+  /* hide playlist & sidebar vids when main vid playing */
+  #main-container:has(.playerFlvContainer.mgp_playingState) {
+    .playlist-bar,
+    #hd-rightColVideoPage
+    {
+      display: none !important;
+    }
+  }
+  /* related vids under main vid */
+  #relatedVideosCenter {
+    grid-template-columns: repeat(5, 1fr) !important;
+    grid-gap: 0 !important;
+    padding: 0 !important;
+  }
+  /* video list item preview */
+  .videoPreviewBg {
+    height: var(--preview-h) !important;
+
+    &:hover {
+      img {
+        display: none !important;
+      }
+      video {
+        position: static !important;
+        display: block !important;
+        width: var(--preview-w) !important;
+        height: var(--preview-h) !important;
+        margin: auto !important;
+      }
+    }
+  }
+  /* album imgs don't use img tags, they're background-image props */
+  .photoAlbumListBlock {
+    background-size: var(--img-size) !important;
+  }
+  /* borders */
+  #psRolloverContainer, /* dropdown on featured model hover */
+  .avatarPopOver,       /* dropdown on profile hover */
+  #leftMenu,            /* burger */
+  #searchesWrapper,     /* search */
+  #searchSuggestions,   /* search with input */
+  #profileMenuDropdown  /* user */
+  {
+    border-radius: 10px;
+    border: 2px solid black !important;
+  }
+  a:not(:has(img, video)), .logo {
+    filter: sepia(1);
+  }
+  .logo img {
+    filter: invert(0.5);
+    background: white;
+    border-radius: 10px;
+  }
+}
