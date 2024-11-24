@@ -3,3 +3,9 @@
     order: 1 !important
   }
 }
+@-moz-document domain("youtube.com") {
+  /* AI vid summary */
+  #expandable-metadata {
+    display: none
+  }
+}
