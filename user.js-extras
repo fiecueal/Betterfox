@@ -1,5 +1,11 @@
 /*** slap this at the bottom of betterfox user.js ***/
 
+// default fonts
+user_pref("font.default.x-western", "sans-serif");
+user_pref("font.name.monospace.x-western", "Noto Mono");
+user_pref("font.name.sans-serif.x-western", "Noto Sans");
+user_pref("font.name.serif.x-western", "Noto Serif");
+// don't go back a page when backspace pressed
 user_pref("browser.backspace_action", 1);
 // open with previous session tabs
 user_pref("browser.startup.page", 3);
@@ -17,7 +23,6 @@ user_pref("browser.tabs.loadBookmarksInTabs", true);
 user_pref("media.eme.enabled", false);
 // disable firefox accounts
 user_pref("identity.fxaccounts.enabled", false);
-user_pref("privacy.donottrackheader.enabled", true);
 user_pref("signon.autofillForms", false);
 // telemetry/sponsors
 user_pref("browser.ping-centre.telemetry", false);
