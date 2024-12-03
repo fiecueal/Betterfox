@@ -12,12 +12,16 @@
     max-width: min-content;
   }
   /* tabs */
-  #titlebar {
+  #TabsToolbar {
     flex-grow: 1;
   }
   /* bookmarks */
   #PersonalToolbar {
     width: 100%;
+  }
+  /* no clue what this is for */
+  #toolbar-menubar {
+    display: none;
   }
 }
 * {
