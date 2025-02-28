@@ -32,7 +32,7 @@ Limitations:
 Building into an exe (on Windows):
 - pipx install pyinstaller  (note: you can try without pipx, but this didn't work for me)
 - Run:
-  - CMD:  `pyinstaller --onefile --name install-betterfox install.py && move %cd%\dist\install-betterfox.exe %cd% && del install-betterfox.spec && rmdir /S /Q build && rmdir dist`
+  - CMD:  `pyinstaller --onefile --name install-betterfox install.py && move %cd%\\dist\\install-betterfox.exe %cd% && del install-betterfox.spec && rmdir /S /Q build && rmdir dist`
   - BASH: `pyinstaller --onefile --name install-betterfox install.py && && mv dist/install-betterfox.exe . && rm install-betterfox.spec && rm -rf ./build/ && rmdir dist`
   (Sorry, didn't want to add a .gitignore solely for the install script)
 - Done!
@@ -66,12 +66,25 @@ def _get_default_profile_folder():
     config_parser = ConfigParser(strict=False)
     config_parser.read(config_path)
 
+    path = None
     for section in config_parser.sections():
         if "Default" in config_parser[section]:
-            if config_parser[section]["Default"] == "1":
-                print("Default detected: " + section)
-                return FIREFOX_ROOT.joinpath(config_parser[section]["Path"])
-
+            section_default_value = config_parser[section]["Default"]
+            if section_default_value:
+                print("Default detected from section: " + section)
+                # Confirm whether a 0 value is possible, keep fallback until then                 
+                if section_default_value == "0":
+                    continue
+                if section_default_value == "1":
+                    path = config_parser[section]["Path"]
+                else:
+                    path = section_default_value
+                break
+    
+    if path is not None:
+        return FIREFOX_ROOT.joinpath(path)
+    else:
+        raise Exception("Could not determine default Firefox profile! Exiting...")
 
 def _get_releases(repository_owner, repository_name):
     releases = []
@@ -110,7 +123,16 @@ def _get_latest_compatible_release(releases):
         if firefox_version in release["supported"]:
             return release
     return None    
-    
+def _get_firefox_version(bin="firefox"):
+    try:
+        ver_string = check_output([bin, "--version"], encoding="UTF-8")
+        return ver_string[ver_string.rindex(" ")+1:].strip()
+    except FileNotFoundError:
+        default_path = str(DEFAULT_FIREFOX_INSTALL.joinpath("firefox"))
+        if bin != default_path:  # Avoid infinite recursion
+            return _get_firefox_version(default_path)
+        else:
+            raise Exception("Firefox binary not found. Please ensure Firefox is installed and the path is correct.")    
 
 def backup_profile(src):
     dest = f"{src}-backup-{datetime.today().strftime('%Y-%m-%d-%H-%M-%S')}"

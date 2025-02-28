@@ -3,7 +3,7 @@
  * Securefox                                                                *
  * "Natura non contristatur"                                                *     
  * priority: provide sensible security and privacy                          *
- * version: 131                                                             *
+ * version: 135                                                             *
  * url: https://github.com/yokoffing/Betterfox                              *
  * credit: Most prefs are reproduced and adapted from the arkenfox project  *
  * credit urL: https://github.com/arkenfox/user.js                          *
@@ -21,10 +21,10 @@
 // [NOTE] FF86: "Strict" tracking protection enables dFPI.
 // [1] https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop
 // [2] https://www.reddit.com/r/firefox/comments/l7xetb/network_priority_for_firefoxs_enhanced_tracking/gle2mqn/?web2x&context=3
+user_pref("browser.contentblocking.category", "strict"); // [HIDDEN]
 //user_pref("privacy.trackingprotection.enabled", true); // enabled with "Strict"
 //user_pref("privacy.trackingprotection.pbmode.enabled", true); // DEFAULT
 //user_pref("browser.contentblocking.customBlockList.preferences.ui.enabled", false); // DEFAULT
-user_pref("browser.contentblocking.category", "strict"); // [HIDDEN]
 //user_pref("privacy.trackingprotection.socialtracking.enabled", true); // enabled with "Strict"
     //user_pref("privacy.socialtracking.block_cookies.enabled", true); // DEFAULT
 //user_pref("privacy.trackingprotection.cryptomining.enabled", true); // DEFAULT
@@ -61,10 +61,14 @@ user_pref("browser.contentblocking.category", "strict"); // [HIDDEN]
 // [TEST - instagram embed] https://www.ndtv.com/entertainment/bharti-singh-and-husband-haarsh-limbachiyaa-announce-pregnancy-see-trending-post-2646359
 // [TEST - tweet embed] https://www.newsweek.com/cryptic-tweet-britney-spears-shows-elton-john-collab-may-date-back-2015-1728036
 // [TEST - tiktok embed] https://www.vulture.com/article/snl-adds-four-new-cast-members-for-season-48.html
+// [TEST - truthsocial embed] https://www.newsweek.com/donald-trump-congratulates-patrick-brittany-mahomes-new-baby-2027097
 // [1] https://www.reddit.com/r/firefox/comments/l79nxy/firefox_dev_is_ignoring_social_tracking_preference/gl84ukk
 // [2] https://www.reddit.com/r/firefox/comments/pvds9m/reddit_embeds_not_loading/
-user_pref("urlclassifier.trackingSkipURLs", "*.reddit.com, *.twitter.com, *.twimg.com, *.tiktok.com"); // MANUAL
-user_pref("urlclassifier.features.socialtracking.skipURLs", "*.instagram.com, *.twitter.com, *.twimg.com"); // MANUAL
+//user_pref("urlclassifier.trackingSkipURLs", "embed.reddit.com"); // MANUAL
+    // originals:    
+        user_pref("urlclassifier.trackingSkipURLs", "*.reddit.com, *.twitter.com, *.twimg.com, *.tiktok.com"); // MANUAL
+        user_pref("urlclassifier.features.socialtracking.skipURLs", "*.instagram.com, *.twitter.com, *.twimg.com"); // MANUAL
+//user_pref("extensions.webcompat.smartblockEmbeds.enabled", true); // NIGHTLY-ONLY
 
 // PREF: lower the priority of network loads for resources on the tracking protection list [NIGHTLY]
 // [1] https://github.com/arkenfox/user.js/issues/102#issuecomment-298413904
@@ -110,6 +114,7 @@ user_pref("urlclassifier.features.socialtracking.skipURLs", "*.instagram.com, *.
 // [6] https://github.com/arkenfox/user.js/issues/1281
 // [7] https://hacks.mozilla.org/2022/02/improving-the-storage-access-api-in-firefox/
 //user_pref("network.cookie.cookieBehavior", 5); // DEFAULT FF103+
+//user_pref("network.cookie.cookieBehavior.optInPartitioning", true); // [ETP FF132+]
 //user_pref("browser.contentblocking.reject-and-isolate-cookies.preferences.ui.enabled", true); // DEFAULT
 
 // PREF: Network Partitioning
@@ -122,7 +127,7 @@ user_pref("urlclassifier.features.socialtracking.skipURLs", "*.instagram.com, *.
 // [3] https://blog.mozilla.org/security/2021/01/26/supercookie-protections/
 //user_pref("privacy.partition.network_state", true); // DEFAULT
     //user_pref("privacy.partition.serviceWorkers", true); // [DEFAULT: true FF105+]
-    //user_pref("privacy.partition.network_state.ocsp_cache", true); // enabled with "Strict" [DEFAULT: true FF123+]
+    //user_pref("privacy.partition.network_state.ocsp_cache", true); // [DEFAULT: true FF123+]
     //user_pref("privacy.partition.bloburl_per_partition_key", true); // [FF118+]
 // enable APS (Always Partitioning Storage) [FF104+]
 //user_pref("privacy.partition.always_partition_third_party_non_cookie_storage", true); // [DEFAULT: true FF109+]
@@ -472,6 +477,9 @@ user_pref("browser.sessionstore.interval", 60000); // 1 minute; default=15000 (1
    //user_pref("privacy.cpd.passwords", false);
    //user_pref("privacy.cpd.siteSettings", false);
    //user_pref("privacy.clearHistory.siteSettings", false);
+
+// PREF: purge session icon in Private Browsing windows
+user_pref("browser.privatebrowsing.resetPBM.enabled", true);
 
 /******************************************************************************
  * SECTION: SHUTDOWN & SANITIZING                                             *
@@ -1298,15 +1306,16 @@ user_pref("permissions.default.geo", 2);
 //user_pref("extensions.update.enabled", false);
 
 // PREF: disable search engine updates (e.g. OpenSearch)
+// Prevent Firefox from adding back search engines after you removed them.
 // [NOTE] This does not affect Mozilla's built-in or Web Extension search engines.
-//user_pref("browser.search.update", false);
+user_pref("browser.search.update", false);
 
 // PREF: remove special permissions for certain mozilla domains [FF35+]
 // default = resource://app/defaults/permissions
 user_pref("permissions.manager.defaultsUrl", "");
 
 // PREF: remove webchannel whitelist
-user_pref("webchannel.allowObject.urlWhitelist", "");
+//user_pref("webchannel.allowObject.urlWhitelist", ""); // [DEFAULT FF132+]
 
 /******************************************************************************
  * SECTION: TELEMETRY                                                   *
@@ -1373,7 +1382,7 @@ user_pref("browser.tabs.crashReporting.sendReport", false);
 
 // PREF: enforce no submission of backlogged crash reports
 // [SETTING] Privacy & Security>Firefox Data Collection & Use>Allow Firefox to send backlogged crash reports
-user_pref("browser.crashReports.unsubmittedCheck.autoSubmit2", false);
+//user_pref("browser.crashReports.unsubmittedCheck.autoSubmit2", false); // [DEFAULT FF132+]
 
 /******************************************************************************
  * SECTION: DETECTION                                                        *

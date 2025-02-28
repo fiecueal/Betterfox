@@ -3,7 +3,7 @@
  * Peskyfox                                                                 *
  * "Aquila non capit muscas"                                                *
  * priority: remove annoyances                                              *
- * version: 131                                                             *
+ * version: 135                                                             *
  * url: https://github.com/yokoffing/Betterfox                              *
  * credit: Some prefs are reproduced and adapted from the arkenfox project  *
  * credit urL: https://github.com/arkenfox/user.js                          *
@@ -102,7 +102,7 @@ user_pref("browser.privateWindowSeparation.enabled", false);
 //user_pref("browser.search.widget.inNavBar", true);
 
 // PREF: new tab page wallpapers
-user_pref("browser.newtabpage.activity-stream.newtabWallpapers.v2.enabled", true);
+//user_pref("browser.newtabpage.activity-stream.newtabWallpapers.v2.enabled", true); // [DEFAULT FF132+]
 
 /****************************************************************************
  * SECTION: COOKIE BANNER HANDLING                                         *
@@ -165,7 +165,7 @@ user_pref("full-screen-api.warning.timeout", 0); // default=3000
 // [2] https://reddit.com/r/firefox/comments/wvs04y/comment/ilklzy1/?context=3
 //user_pref("gfx.font_rendering.cleartype_params.rendering_mode", 5);
 //user_pref("gfx.font_rendering.cleartype_params.cleartype_level", 100);
-//user_pref("gfx.font_rendering.cleartype_params.force_gdi_classic_for_families", "");
+//user_pref("gfx.font_rendering.cleartype_params.force_gdi_classic_for_families", ""); // DEFAULT FF135+
 //user_pref("gfx.font_rendering.directwrite.use_gdi_table_loading", false);
 // Some users find these helpful:
     //user_pref("gfx.font_rendering.cleartype_params.gamma", 1750);
@@ -204,6 +204,7 @@ user_pref("browser.urlbar.trending.featureGate", false);
 
 // PREF: disable urlbar suggestions
 //user_pref("browser.urlbar.addons.featureGate", false); // [FF115+]
+//user_pref("browser.urlbar.fakespot.featureGate", false); // [FF130+] [DEFAULT: false]
 //user_pref("browser.urlbar.mdn.featureGate", false); // [FF117+] [HIDDEN PREF]
 //user_pref("browser.urlbar.pocket.featureGate", false); // [FF116+] [DEFAULT: false]
 //user_pref("browser.urlbar.weather.featureGate", false); // [FF108+] [DEFAULT: false]
