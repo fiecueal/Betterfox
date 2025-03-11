@@ -30,3 +30,5 @@ user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
 user_pref("toolkit.telemetry.pioneer-new-studies-available", false);
 // new tab page
 user_pref("browser.newtabpage.activity-stream.showSearch", false);
+// chatbot
+user_pref("browser.ml.chat.enabled", false);
