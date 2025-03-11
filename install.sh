@@ -1,15 +1,14 @@
 #!/bin/bash
 
-# assuming current dir is the ff profile -> `install.sh $(pwd)`
-# if any second argument exists
+# accepts profile name for $1
+# if any second argument exists, create new profile
 if [ -z "$2" ]; then
-  dir="$1"
+  profile=$(find $HOME/.mozilla/firefox/ -maxdepth 1 -name "*.$1")
 else
-  name="$1"
-  firefox -CreateProfile "$name"
+  firefox -CreateProfile "$1"
   sleep 2 # give firefox time to create the new profile
-  dir=$(find $HOME/.mozilla/firefox/ -maxdepth 1 -name "*.$name")
+  profile=$(find $HOME/.mozilla/firefox/ -maxdepth 1 -name "*.$1")
 fi
 
-cp -r --backup=numbered chrome/ user.js $dir
-cat user.js-extras >> $dir/user.js
+cp -r --backup=numbered chrome/ user.js $profile
+cat user.js-extras >> $profile/user.js
