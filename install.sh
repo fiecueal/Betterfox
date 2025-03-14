@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# accepts profile name for $1
-# if any second argument exists, create new profile
-if [ -z "$2" ]; then
+# creates new profile if $1 does not exist
+if [ "$1" ]; then
   profile=$(find $HOME/.mozilla/firefox/ -maxdepth 1 -name "*.$1")
 else
   firefox -CreateProfile "$1"
