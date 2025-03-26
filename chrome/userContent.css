@@ -9,3 +9,9 @@
     display: none
   }
 }
+@-moz-document domain("discord.com") {
+  /* ads */
+  .wrapper__0d616 {
+    display: none
+  }
+}
