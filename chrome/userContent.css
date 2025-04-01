@@ -15,3 +15,9 @@
     display: none
   }
 }
+@-moz-document domain("google.com") {
+  /* AI overview */
+  #Odp5De {
+    display: none
+  }
+}
