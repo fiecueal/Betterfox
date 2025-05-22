@@ -1,23 +1,31 @@
 @-moz-document domain("messenger.com") {
-  [aria-label="Thread list"] {
-    order: 1 !important
-  }
+	[aria-label="Thread list"] {
+		order: 1 !important
+	}
 }
 @-moz-document domain("youtube.com") {
-  /* AI vid summary */
-  #expandable-metadata {
-    display: none
-  }
+	/* AI vid summary */
+	#expandable-metadata {
+		display: none
+	}
 }
 @-moz-document domain("discord.com") {
-  /* ads */
-  .wrapper__0d616 {
-    display: none
-  }
+	/* ads */
+	.wrapper__0d616 {
+		display: none
+	}
 }
 @-moz-document domain("google.com") {
-  /* AI overview */
-  #Odp5De {
-    display: none
-  }
+	/* AI overview */
+	#Odp5De {
+		display: none
+	}
+}
+@-moz-document domain("ecosia.org") {
+	/* ads */
+	[data-test-id="mainline-result-productAds"],
+	[data-test-id="sidebar-result-ad"],
+	[data-test-id="ad-text-result"] {
+		display: none !important
+	}
 }

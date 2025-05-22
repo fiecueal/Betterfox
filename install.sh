@@ -16,6 +16,7 @@ if [ ! "$profile" ]; then
 fi
 
 profile=$(find $HOME/.mozilla/firefox/ -maxdepth 1 -name "*$1")
+echo "copying chrome/ and user.js to $profile"
 
 cp -r --backup=numbered chrome/ user.js $profile
 cat user.js-extras >> $profile/user.js
