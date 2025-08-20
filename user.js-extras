@@ -32,3 +32,5 @@ user_pref("toolkit.telemetry.pioneer-new-studies-available", false);
 user_pref("browser.newtabpage.activity-stream.showSearch", false);
 // chatbot
 user_pref("browser.ml.chat.enabled", false);
+// file picker
+user_pref("widget.use-xdg-desktop-portal.file-picker", 1);
