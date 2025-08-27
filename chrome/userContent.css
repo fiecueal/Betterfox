@@ -16,8 +16,9 @@
 	}
 }
 @-moz-document domain("google.com") {
-	/* AI overview */
-	#Odp5De {
+	/* AI overview & AI mode */
+	#Odp5De,
+	[jsname="xBNgKe"] {
 		display: none
 	}
 }
