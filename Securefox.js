@@ -3,7 +3,7 @@
  * Securefox                                                                *
  * "Natura non contristatur"                                                *     
  * priority: provide sensible security and privacy                          *
- * version: 135                                                             *
+ * version: 142                                                             *
  * url: https://github.com/yokoffing/Betterfox                              *
  * credit: Most prefs are reproduced and adapted from the arkenfox project  *
  * credit urL: https://github.com/arkenfox/user.js                          *
@@ -22,6 +22,9 @@
 // [1] https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop
 // [2] https://www.reddit.com/r/firefox/comments/l7xetb/network_priority_for_firefoxs_enhanced_tracking/gle2mqn/?web2x&context=3
 user_pref("browser.contentblocking.category", "strict"); // [HIDDEN]
+// [1] https://bugzilla.mozilla.org/show_bug.cgi?id=1970647
+user_pref("privacy.trackingprotection.allow_list.baseline.enabled", true); // [FF142+]
+user_pref("privacy.trackingprotection.allow_list.convenience.enabled", true); // [FF142+]
 //user_pref("privacy.trackingprotection.enabled", true); // enabled with "Strict"
 //user_pref("privacy.trackingprotection.pbmode.enabled", true); // DEFAULT
 //user_pref("browser.contentblocking.customBlockList.preferences.ui.enabled", false); // DEFAULT
@@ -56,7 +59,14 @@ user_pref("browser.contentblocking.category", "strict"); // [HIDDEN]
 //user_pref("privacy.query_stripping.strip_list", ""); // DEFAULT
 //user_pref("privacy.query_stripping.strip_on_share.enabled", true);
 
-// PREF: allow embedded tweets, Instagram and Reddit posts, and TikTok embeds
+// PREF: Smartblock
+// [1] https://support.mozilla.org/en-US/kb/smartblock-enhanced-tracking-protection
+// [2] https://www.youtube.com/watch?v=VE8SrClOTgw
+// [3] https://searchfox.org/mozilla-central/source/browser/extensions/webcompat/data/shims.js
+//user_pref("extensions.webcompat.enable_shims", true); // [HIDDEN] enabled with "Strict"
+//user_pref("extensions.webcompat.smartblockEmbeds.enabled", true); // [DEFAULT FF137+]
+
+// PREF: allow embedded tweets and reddit posts [FF136+]
 // [TEST - reddit embed] https://www.pcgamer.com/amazing-halo-infinite-bugs-are-already-rolling-in/
 // [TEST - instagram embed] https://www.ndtv.com/entertainment/bharti-singh-and-husband-haarsh-limbachiyaa-announce-pregnancy-see-trending-post-2646359
 // [TEST - tweet embed] https://www.newsweek.com/cryptic-tweet-britney-spears-shows-elton-john-collab-may-date-back-2015-1728036
@@ -64,11 +74,13 @@ user_pref("browser.contentblocking.category", "strict"); // [HIDDEN]
 // [TEST - truthsocial embed] https://www.newsweek.com/donald-trump-congratulates-patrick-brittany-mahomes-new-baby-2027097
 // [1] https://www.reddit.com/r/firefox/comments/l79nxy/firefox_dev_is_ignoring_social_tracking_preference/gl84ukk
 // [2] https://www.reddit.com/r/firefox/comments/pvds9m/reddit_embeds_not_loading/
-//user_pref("urlclassifier.trackingSkipURLs", "embed.reddit.com"); // MANUAL
-    // originals:    
-        user_pref("urlclassifier.trackingSkipURLs", "*.reddit.com, *.twitter.com, *.twimg.com, *.tiktok.com"); // MANUAL
-        user_pref("urlclassifier.features.socialtracking.skipURLs", "*.instagram.com, *.twitter.com, *.twimg.com"); // MANUAL
-//user_pref("extensions.webcompat.smartblockEmbeds.enabled", true); // NIGHTLY-ONLY
+// [3] https://github.com/yokoffing/Betterfox/issues/413
+//user_pref("urlclassifier.trackingSkipURLs", "embed.reddit.com, *.twitter.com, *.twimg.com"); // MANUAL [FF136+]
+//user_pref("urlclassifier.features.socialtracking.skipURLs", "*.twitter.com, *.twimg.com"); // MANUAL [FF136+]
+
+// PREF: allow embedded tweets, Instagram and Reddit posts, and TikTok embeds [before FF136+]
+//user_pref("urlclassifier.trackingSkipURLs", "*.reddit.com, *.twitter.com, *.twimg.com, *.tiktok.com"); // MANUAL
+//user_pref("urlclassifier.features.socialtracking.skipURLs", "*.instagram.com, *.twitter.com, *.twimg.com"); // MANUAL
 
 // PREF: lower the priority of network loads for resources on the tracking protection list [NIGHTLY]
 // [1] https://github.com/arkenfox/user.js/issues/102#issuecomment-298413904
@@ -113,6 +125,7 @@ user_pref("browser.contentblocking.category", "strict"); // [HIDDEN]
 // [5] https://hacks.mozilla.org/2021/02/introducing-state-partitioning/
 // [6] https://github.com/arkenfox/user.js/issues/1281
 // [7] https://hacks.mozilla.org/2022/02/improving-the-storage-access-api-in-firefox/
+// [8] https://blog.includesecurity.com/2025/04/cross-site-websocket-hijacking-exploitation-in-2025/
 //user_pref("network.cookie.cookieBehavior", 5); // DEFAULT FF103+
 //user_pref("network.cookie.cookieBehavior.optInPartitioning", true); // [ETP FF132+]
 //user_pref("browser.contentblocking.reject-and-isolate-cookies.preferences.ui.enabled", true); // DEFAULT
@@ -132,12 +145,6 @@ user_pref("browser.contentblocking.category", "strict"); // [HIDDEN]
 // enable APS (Always Partitioning Storage) [FF104+]
 //user_pref("privacy.partition.always_partition_third_party_non_cookie_storage", true); // [DEFAULT: true FF109+]
 //user_pref("privacy.partition.always_partition_third_party_non_cookie_storage.exempt_sessionstorage", false); // [DEFAULT: false FF109+]
-
-// PREF: Smartblock
-// [1] https://support.mozilla.org/en-US/kb/smartblock-enhanced-tracking-protection
-// [2] https://www.youtube.com/watch?v=VE8SrClOTgw
-// [3] https://searchfox.org/mozilla-central/source/browser/extensions/webcompat/data/shims.js
-//user_pref("extensions.webcompat.enable_shims", true); // enabled with "Strict"
 
 // PREF: Redirect Tracking Prevention / Cookie Purging
 // All storage is cleared (more or less) daily from origins that are known trackers and that
@@ -164,6 +171,7 @@ user_pref("browser.contentblocking.category", "strict"); // [HIDDEN]
 // [6] https://web.dev/samesite-cookies-explained/
 // [7] https://portswigger.net/web-security/csrf/bypassing-samesite-restrictions
 // [8] https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies
+// [9] https://blog.includesecurity.com/2025/04/cross-site-websocket-hijacking-exploitation-in-2025/
 // [TEST] https://samesite-sandbox.glitch.me/
 //user_pref("network.cookie.sameSite.laxByDefault", true);
 //user_pref("network.cookie.sameSite.noneRequiresSecure", true); // [DEFAULT FF131+]
@@ -260,6 +268,7 @@ user_pref("security.OCSP.enabled", 0);
 // [1] https://blog.mozilla.org/security/2013/07/29/ocsp-stapling-in-firefox/
 // [2] https://www.imperialviolet.org/2014/04/19/revchecking.html
 // [3] https://www.ssl.com/blogs/how-do-browsers-handle-revoked-ssl-tls-certificates/#ftoc-heading-3
+// [4] https://letsencrypt.org/2024/12/05/ending-ocsp/
 //user_pref("security.OCSP.require", true);
       
 // PREF: CRLite
@@ -271,7 +280,7 @@ user_pref("security.OCSP.enabled", 0);
 // 3 = consult CRLite and enforce "Not Revoked" results, but defer to OCSP for "Revoked" [FF99+, default FF100+]
 // [1] https://bugzilla.mozilla.org/buglist.cgi?bug_id=1429800,1670985,1753071
 // [2] https://blog.mozilla.org/security/tag/crlite/
-user_pref("security.remote_settings.crlite_filters.enabled", true);
+//user_pref("security.remote_settings.crlite_filters.enabled", true); // [DEFAULT: true FF137+]
 user_pref("security.pki.crlite_mode", 2);
 
 // PREF: HTTP Public Key Pinning (HPKP)
@@ -310,6 +319,13 @@ user_pref("security.pki.crlite_mode", 2);
 // [2] https://bugzilla.mozilla.org/show_bug.cgi?id=1880314
 //user_pref("browser.contentanalysis.enabled", false); // [FF121+] [DEFAULT]
 //user_pref("browser.contentanalysis.default_result", 0; // [FF127+] [DEFAULT]
+
+// PREF: disable referrer and storage access for resources injected by content scripts [FF139+]
+//user_pref("privacy.antitracking.isolateContentScriptResources", true);
+
+// PREF: disable CSP Level 2 Reporting [FF140+]
+// [1] https://github.com/yokoffing/Betterfox/issues/415
+user_pref("security.csp.reporting.enabled", false);
 
 /****************************************************************************
  * SECTION: SSL (Secure Sockets Layer) / TLS (Transport Layer Security)    *
@@ -561,8 +577,8 @@ user_pref("browser.urlbar.untrimOnUserInteraction.featureGate", true);
 
 // PREF: display "Not Secure" text on HTTP sites
 // Needed with HTTPS-First Policy; not needed with HTTPS-Only Mode.
-user_pref("security.insecure_connection_text.enabled", true);
-user_pref("security.insecure_connection_text.pbmode.enabled", true);
+//user_pref("security.insecure_connection_text.enabled", true); // [DEFAULT FF136+]
+//user_pref("security.insecure_connection_text.pbmode.enabled", true); // [DEFAULT FF136+]
 
 // PREF: do not show search terms in URL bar [FF110+]
 // Show search query instead of URL on search results pages.
@@ -577,11 +593,13 @@ user_pref("browser.search.separatePrivateDefault.ui.enabled", true);
     //user_pref("browser.search.separatePrivateDefault", true); // DEFAULT
 
 // PREF: enable option to add custom search engine
+// Before FF140, this pref was hidden.
 // [SETTINGS] Settings -> Search -> Search Shortcuts -> Add
 // [EXAMPLE] https://search.brave.com/search?q=%s
 // [EXAMPLE] https://lite.duckduckgo.com/lite/?q=%s
 // [1] https://reddit.com/r/firefox/comments/xkzswb/adding_firefox_search_engine_manually/
-user_pref("browser.urlbar.update2.engineAliasRefresh", true); // HIDDEN
+// [2] https://www.mozilla.org/en-US/firefox/140.0/releasenotes/
+//user_pref("browser.urlbar.update2.engineAliasRefresh", true); // [DEFAULT FF140+]
 
 // PREF: disable live search suggestions (Google, Bing, etc.)
 // [WARNING] Search engines keylog every character you type from the URL bar.
@@ -657,7 +675,8 @@ user_pref("network.IDN_show_punycode", true);
 // [4] https://web.dev/why-https-matters/
 // [5] https://www.cloudflare.com/learning/ssl/why-use-https/
 // [6] https://blog.chromium.org/2023/08/towards-https-by-default.html
-user_pref("dom.security.https_first", true); // [DEFAULT FF129+]
+// [7] https://attackanddefense.dev/2025/03/31/https-first-in-firefox-136.html
+//user_pref("dom.security.https_first", true); // [DEFAULT FF136+]
 //user_pref("dom.security.https_first_pbm", true); // [DEFAULT FF91+]
 //user_pref("dom.security.https_first_schemeless", true); // [FF120+] [DEFAULT FF129+]
 
@@ -837,7 +856,6 @@ user_pref("dom.security.https_first", true); // [DEFAULT FF129+]
 // [NOTE] This does not clear any passwords already saved.
 // [SETTING] Privacy & Security>Logins and Passwords>Ask to save logins and passwords for websites
 //user_pref("signon.rememberSignons", false);
-    //user_pref("signon.rememberSignons.visibilityToggle", true); // DEFAULT
     //user_pref("signon.schemeUpgrades", true); // DEFAULT
     //user_pref("signon.showAutoCompleteFooter", true); // DEFAULT
     //user_pref("signon.autologin.proxy", false); // DEFAULT
@@ -885,10 +903,11 @@ user_pref("signon.privateBrowsingCapture.enabled", false);
 
 // PREF: limit (or disable) HTTP authentication credentials dialogs triggered by sub-resources [FF41+]
 // Hardens against potential credentials phishing.
+// [WARNING] Hardening this pref may prevent you from subscribing to SoGo calendars in Thunderbird 138
 // 0=don't allow sub-resources to open HTTP authentication credentials dialogs
 // 1=don't allow cross-origin sub-resources to open HTTP authentication credentials dialogs
 // 2=allow sub-resources to open HTTP authentication credentials dialogs (default)
-// [1] https://www.fxsitecompat.com/en-CA/docs/2015/http-auth-dialog-can-no-longer-be-triggered-by-cross-origin-resources/
+// [1] https://web.archive.org/web/20181123134351/https://www.fxsitecompat.com/en-CA/docs/2015/http-auth-dialog-can-no-longer-be-triggered-by-cross-origin-resources/
 user_pref("network.auth.subresource-http-auth-allow", 1);
 
 // PREF: prevent password truncation when submitting form data
@@ -971,9 +990,9 @@ user_pref("extensions.enabledScopes", 5); // [HIDDEN PREF]
 // Users may see a notification when running add-ons that are not monitored by Mozilla when they visit certain sites.
 // The notification informs them that “some extensions are not allowed” and were blocked from running on that site.
 // There's no details as to which sites are affected.
-// [1] https://support.mozilla.org/en-US/kb/quarantined-domains
+// [1] https://support.mozilla.org/kb/quarantined-domains
 // [2] https://www.ghacks.net/2023/07/04/firefox-115-new-esr-base-and-some-add-ons-may-be-blocked-from-running-on-certain-sites/
-//user_pref("extensions.quarantinedDomains.enabled", false);
+//user_pref("extensions.quarantinedDomains.enabled", true); // [DEFAULT: true]
 
 /******************************************************************************
  * SECTION: HEADERS / REFERERS                                               *
@@ -1267,16 +1286,21 @@ user_pref("browser.safebrowsing.downloads.remote.enabled", false);
 // To add site exceptions: Page Info>Permissions>Receive Notifications
 // To manage site exceptions: Options>Privacy & Security>Permissions>Notifications>Settings
 // 0=always ask (default), 1=allow, 2=block
+// [1] https://easylinuxtipsproject.blogspot.com/p/security.html#ID5
+// [2] https://github.com/yokoffing/Betterfox/wiki/Common-Overrides#site-notifications
 user_pref("permissions.default.desktop-notification", 2);
    
 // PREF: default permission for Location Requests
 // 0=always ask (default), 1=allow, 2=block
 user_pref("permissions.default.geo", 2);
 
-// PREF: use Mozilla geolocation service instead of Google when geolocation is enabled
-// [NOTE] Mozilla's geolocation service is discontinued 12 June 2024 [1].
+// PREF: use alternative geolocation service instead of Google
+// [NOTE] Mozilla's geolocation service was discontinued in June 2024 [1].
+// BeaconDB is its replacement.
 // [1] https://github.com/mozilla/ichnaea/issues/2065
-//user_pref("geo.provider.network.url", "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%");
+// [2] https://codeberg.org/beacondb/beacondb
+// [3] https://github.com/yokoffing/Betterfox/issues/378
+user_pref("geo.provider.network.url", "https://beacondb.net/v1/geolocate");
 
 // PREF: disable using the OS's geolocation service
 //user_pref("geo.provider.ms-windows-location", false); // [WINDOWS]
@@ -1316,6 +1340,10 @@ user_pref("permissions.manager.defaultsUrl", "");
 
 // PREF: remove webchannel whitelist
 //user_pref("webchannel.allowObject.urlWhitelist", ""); // [DEFAULT FF132+]
+
+// PREF: disable metadata caching for installed add-ons by default
+// [1] https://blog.mozilla.org/addons/how-to-opt-out-of-add-on-metadata-updates/
+user_pref("extensions.getAddons.cache.enabled", false);
 
 /******************************************************************************
  * SECTION: TELEMETRY                                                   *
@@ -1357,6 +1385,9 @@ user_pref("toolkit.coverage.endpoint.base", "");
 user_pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
 user_pref("browser.newtabpage.activity-stream.telemetry", false);
 
+// PREF: disable daily active users [FF136+]
+user_pref("datareporting.usage.uploadEnabled", false);
+
 /******************************************************************************
  * SECTION: EXPERIMENTS                                                      *
 ******************************************************************************/
@@ -1389,15 +1420,16 @@ user_pref("browser.tabs.crashReporting.sendReport", false);
 ******************************************************************************/
 
 // PREF: disable Captive Portal detection
+// [WARNING] Do NOT use for mobile devices. May NOT be able to use Firefox on public wifi (hotels, coffee shops, etc).
 // [1] https://www.eff.org/deeplinks/2017/08/how-captive-portals-interfere-wireless-security-and-privacy
 // [2] https://wiki.mozilla.org/Necko/CaptivePortal
-user_pref("captivedetect.canonicalURL", "");
-user_pref("network.captive-portal-service.enabled", false);
+//user_pref("captivedetect.canonicalURL", "");
+//user_pref("network.captive-portal-service.enabled", false);
 
 // PREF: disable Network Connectivity checks
 // [WARNING] Do NOT use for mobile devices. May NOT be able to use Firefox on public wifi (hotels, coffee shops, etc).
 // [1] https://bugzilla.mozilla.org/1460537
-user_pref("network.connectivity-service.enabled", false);
+//user_pref("network.connectivity-service.enabled", false);
 
 // PREF: disable Privacy-Preserving Attribution [FF128+]
 // [NOTE] PPA disabled if main telemetry switches are disabled.

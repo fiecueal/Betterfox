@@ -3,7 +3,7 @@
  * Fastfox                                                                              *
  * "Non ducor duco"                                                                     *
  * priority: speedy browsing                                                            *
- * version: 135                                                                         *
+ * version: 137                                                                         *
  * url: https://github.com/yokoffing/Betterfox                                          *
  ***************************************************************************************/
 
@@ -77,6 +77,15 @@ user_pref("content.notify.interval", 100000); // (.10s); default=120000 (.12s)
 
 // PREF: lazy load iframes
 //user_pref("dom.iframe_lazy_loading.enabled", true); // DEFAULT [FF121+]
+
+// PREF: Prioritized Task Scheduling API 
+// [1] https://github.com/yokoffing/Betterfox/issues/355
+// [2] https://blog.mozilla.org/performance/2022/06/02/prioritized-task-scheduling-api-is-prototyped-in-nightly/
+// [3] https://medium.com/airbnb-engineering/building-a-faster-web-experience-with-the-posttask-scheduler-276b83454e91
+// [4] https://github.com/WICG/scheduling-apis/blob/main/explainers/prioritized-post-task.md
+// [5] https://wicg.github.io/scheduling-apis/
+// [6] https://caniuse.com/mdn-api_taskcontroller
+//user_pref("dom.enable_web_task_scheduling", true); // DEFAULT [FF142+]
 
 /****************************************************************************
  * SECTION: GFX RENDERING TWEAKS                                            *
@@ -254,13 +263,14 @@ user_pref("browser.cache.disk.enable", false);
 // that only contains settings for systems at or below 8GB of system memory [1].
 // Waterfox G6 allows it to go above 8GB machines [3].
 // Value can be up to the max size of an unsigned 64-bit integer.
-// -1=Automatically decide the maximum memory to use to cache decoded images,
+// -1 = Automatically decide the maximum memory to use to cache decoded images,
 // messages, and chrome based on the total amount of RAM
+// For machines with 8GB+ RAM, that equals 32768 kb = 32 MB
 // [1] https://kb.mozillazine.org/Browser.cache.memory.capacity#-1
 // [2] https://searchfox.org/mozilla-central/source/netwerk/cache2/CacheObserver.cpp#94-125
 // [3] https://github.com/WaterfoxCo/Waterfox/commit/3fed16932c80a2f6b37d126fe10aed66c7f1c214
-//user_pref("browser.cache.memory.capacity", -1); // DEFAULT; 256000=256 MB; 512000=500 MB; 1048576=1GB, 2097152=2GB
-//user_pref("browser.cache.memory.max_entry_size", 10240); // (10 MB); default=5120 (5 MB)
+//user_pref("browser.cache.memory.capacity", 131072); // (128 MB)
+//user_pref("browser.cache.memory.max_entry_size", 20480); // (20 MB); default=5120 (5 MB)
 
 // PREF: amount of Back/Forward cached pages stored in memory for each tab
 // Pages that were recently visited are stored in memory in such a way
@@ -271,7 +281,7 @@ user_pref("browser.cache.disk.enable", false);
 // is no reason for Firefox to keep memory for this.
 // -1=determine automatically (8 pages)
 // [1] https://kb.mozillazine.org/Browser.sessionhistory.max_total_viewers#Possible_values_and_their_effects
-//user_pref("browser.sessionhistory.max_total_viewers", 4);
+user_pref("browser.sessionhistory.max_total_viewers", 4);
 
 /****************************************************************************
  * SECTION: MEDIA CACHE                                                     *
@@ -323,13 +333,14 @@ user_pref("image.mem.decode_bytes_at_a_time", 32768); // default=16384; alt=6553
 ****************************************************************************/
 
 // PREF: use bigger packets
-// [WARNING] Cannot open HTML files bigger than 4MB if changed [2].
+// [WARNING] Cannot open HTML files bigger than 4MB if value is too large [2].
 // Reduce Firefox's CPU usage by requiring fewer application-to-driver data transfers.
 // However, it does not affect the actual packet sizes transmitted over the network.
 // [1] https://www.mail-archive.com/support-seamonkey@lists.mozilla.org/msg74561.html
 // [2] https://github.com/yokoffing/Betterfox/issues/279
-//user_pref("network.buffer.cache.size", 262144); // 256 kb; default=32768 (32 kb)
-//user_pref("network.buffer.cache.count", 128); // default=24
+// [3] https://ra1ahq.blog/en/optimizaciya-proizvoditelnosti-mozilla-firefox
+//user_pref("network.buffer.cache.size", 65535); // default=32768 (32 kb); 262144 too large
+//user_pref("network.buffer.cache.count", 48); // default=24; 128 too large
 
 // PREF: increase the absolute number of HTTP connections
 // [1] https://kb.mozillazine.org/Network.http.max-connections
@@ -402,7 +413,7 @@ user_pref("network.ssl_tokens_cache_capacity", 10240); // default=2048; more TLS
 // [3] https://searchfox.org/mozilla-central/rev/028c68d5f32df54bca4cf96376f79e48dfafdf08/modules/libpref/init/all.js#1280-1282
 // [4] https://www.keycdn.com/blog/resource-hints#prefetch
 // [5] https://3perf.com/blog/link-rels/#prefetch
-//user_pref("network.http.speculative-parallel-limit", 20); // DEFAULT (FF127+?)
+user_pref("network.http.speculative-parallel-limit", 0);
 
 // PREF: DNS prefetching for HTMLLinkElement <link rel="dns-prefetch">
 // Used for cross-origin connections to provide small performance improvements.
@@ -416,7 +427,7 @@ user_pref("network.ssl_tokens_cache_capacity", 10240); // default=2048; more TLS
 user_pref("network.dns.disablePrefetch", true);
     user_pref("network.dns.disablePrefetchFromHTTPS", true); // [FF127+ false]
 
-// PREF:  DNS prefetch for HTMLAnchorElement (speculative DNS)
+// PREF: DNS prefetch for HTMLAnchorElement (speculative DNS)
 // Disable speculative DNS calls to prevent Firefox from resolving
 // hostnames for other domains linked on a page. This may eliminate
 // unnecessary DNS lookups, but can increase latency when following external links.
@@ -435,11 +446,11 @@ user_pref("network.dns.disablePrefetch", true);
 // [NOTE] Firefox will perform DNS lookup (if enabled) and TCP and TLS handshake,
 // but will not start sending or receiving HTTP data.
 // [1] https://www.ghacks.net/2017/07/24/disable-preloading-firefox-autocomplete-urls/
-//user_pref("browser.urlbar.speculativeConnect.enabled", false);
+user_pref("browser.urlbar.speculativeConnect.enabled", false);
 
 // PREF: mousedown speculative connections on bookmarks and history [FF98+]
 // Whether to warm up network connections for places:menus and places:toolbar.
-//user_pref("browser.places.speculativeConnect.enabled", false);
+user_pref("browser.places.speculativeConnect.enabled", false);
 
 // PREF: network module preload <link rel="modulepreload"> [FF115+]
 // High-priority loading of current page JavaScript modules.
@@ -497,7 +508,7 @@ user_pref("network.prefetch-next", false);
 // When enabled, it trains and uses Firefox's algorithm to preload page resource
 // by tracking past page resources. It uses a local file (history) of needed images,
 // scripts, etc. to request them preemptively when navigating.
-// [NOTE] By default, it only preconnects, doing DNS, TCP, and SSL handshakes.
+// [NOTE] By default, it only preconnects DNS, TCP, and SSL handshakes.
 // No data sends until clicking. With "network.predictor.enable-prefetch" enabled,
 // it also performs prefetches.
 // [1] https://wiki.mozilla.org/Privacy/Reviews/Necko
@@ -540,15 +551,6 @@ user_pref("network.predictor.enabled", false);
 // [1] https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Masonry_Layout
 // [2] https://www.smashingmagazine.com/native-css-masonry-layout-css-grid/
 user_pref("layout.css.grid-template-masonry-value.enabled", true);
-
-// PREF: Prioritized Task Scheduling API [NIGHTLY]
-// [1] https://github.com/yokoffing/Betterfox/issues/355
-// [2] https://blog.mozilla.org/performance/2022/06/02/prioritized-task-scheduling-api-is-prototyped-in-nightly/
-// [3] https://medium.com/airbnb-engineering/building-a-faster-web-experience-with-the-posttask-scheduler-276b83454e91
-// [4] https://github.com/WICG/scheduling-apis/blob/main/explainers/prioritized-post-task.md
-// [5] https://wicg.github.io/scheduling-apis/
-// [6] https://caniuse.com/mdn-api_taskcontroller
-//user_pref("dom.enable_web_task_scheduling", true);
 
 /****************************************************************************
  * SECTION: TAB UNLOAD                                                      *
