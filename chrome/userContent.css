@@ -4,7 +4,8 @@
 	}
 }
 @-moz-document domain("youtube.com") {
-	/* AI vid summary */
+	/* AI ask button & vid summary */
+	ytd-menu-renderer #flexible-item-buttons,
 	#expandable-metadata {
 		display: none
 	}
