@@ -12,36 +12,36 @@
 }
 @-moz-document domain("discord.com") {
 	/* top bar */
-	div:has(>[aria-label="open quick switcher" i]),
-	[aria-label="servers sidebar" i],
+	div:has(>[aria-label="Open Quick Switcher"]),
+	[aria-label="Servers sidebar"],
 
 	/* behind & under user area */
-	div:has(>[aria-label="servers sidebar" i]),
-	div:has(>[aria-label="servers sidebar" i])::after,
+	div:has(>[aria-label="Servers sidebar"]),
+	div:has(>[aria-label="Servers sidebar"])::after,
 
 	/* server channels bar */
-	[aria-label$="(server)" i],
+	[aria-label$="(server)"],
 
 	/* dm list bar */
-	[aria-label="private channels" i],
-	[aria-label="private channels" i]>*,
+	[aria-label="Private channels"],
+	[aria-label="Private channels"]>*,
 
-	[aria-label="channel header" i],
+	[aria-label="Channel header"],
 
 	/* shadow separator in chat title bar */
-	[aria-label="channel header" i]>div>div::after,
+	[aria-label="Channel header"]>div>div::after,
 
 	/* chat area */
 	main,
 
 	/* chat area bottom */
-	[class^="chatgradient" i],
+	main>div>[class^="chatGradient"],
 
 	/* server/group chat right bar */
 	main+div>aside>div,
 
 	/* dm right bar */
-	[class*="user-profile-sidebar" i],
+	.user-profile-sidebar",
 
 	/* users list item */
 	[role="listitem"] {
@@ -53,7 +53,7 @@
 	[class*="sidebarListRounded"],
 	[class*="page__"],
 	main+div,
-	[class*="user-profile-sidebar"] {
+	.user-profile-sidebar {
 		border-inline-start: 1px solid #938aad !important
 	}
 
