@@ -54,7 +54,16 @@
 #nav-bar-customization-target,
 toolbaritem,
 toolbarbutton,
-.tabbrowser-tab
-{
+.tabbrowser-tab {
   background: #282433 !important;
+}
+.tabbrowser-tab[selected="true"] {
+  >stack>vbox {
+    border: 1px solid #e965a5 !important;
+    background: #3f3951 !important
+  }
+
+  label {
+    color: #e965a5 !important
+  }
 }
