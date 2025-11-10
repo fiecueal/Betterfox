@@ -38,8 +38,7 @@
  * pinned tabs remain in the same container as unpinned tabs
  * so messing with them borks their layout
  */
-.tabbrowser-tab:not([pinned])
-{
+.tabbrowser-tab {
   margin: 0 !important;
   padding: 0 !important;
 }
@@ -50,4 +49,12 @@
 }
 .bookmark-item {
   margin: 0 !important;
+}
+
+#nav-bar-customization-target,
+toolbaritem,
+toolbarbutton,
+.tabbrowser-tab
+{
+  background: #282433 !important;
 }
