@@ -41,7 +41,7 @@
 	main+div>aside>div,
 
 	/* dm right bar */
-	.user-profile-sidebar",
+	.user-profile-sidebar,
 
 	/* users list item */
 	[role="listitem"] {
@@ -50,6 +50,7 @@
 	}
 
 	/* borders */
+	/* verticals */
 	[class*="sidebarListRounded"],
 	[class*="page__"],
 	main+div,
