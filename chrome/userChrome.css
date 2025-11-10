@@ -1,36 +1,44 @@
 /* given a reasonable screen width, place tabs & url bar next to each other */
 @media(min-width: 960px) and (orientation: landscape) {
+
   /* the whole top UI */
   #navigator-toolbox {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
   }
+
   /* url/tools */
   #nav-bar {
     order: -1;
     max-width: min-content;
   }
+
   /* tabs */
   #TabsToolbar {
     flex-grow: 1;
   }
+
   /* bookmarks */
   #PersonalToolbar {
     width: 100%;
   }
+
   /* no clue what this is for */
   #toolbar-menubar {
     display: none;
   }
 }
+
 * {
   border: 0 !important;
   border-radius: 0 !important;
 }
+
 #urlbar-container {
   --urlbar-margin-inline: 0;
 }
+
 /* tool/extension icons */
 .toolbarbutton-1,
 .chromeclass-toolbar-additional,
@@ -42,11 +50,13 @@
   margin: 0 !important;
   padding: 0 !important;
 }
+
 /* scroll buttons for when tabs overflow */
 #scrollbutton-up,
 #scrollbutton-down {
   min-width: 2rem;
 }
+
 .bookmark-item {
   margin: 0 !important;
 }
@@ -57,6 +67,7 @@ toolbarbutton,
 .tabbrowser-tab {
   background: #282433 !important;
 }
+
 .tabbrowser-tab[selected="true"] {
   >stack>vbox {
     border: 1px solid #e965a5 !important;

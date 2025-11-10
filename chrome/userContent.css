@@ -10,19 +10,25 @@
 		order: 1 !important
 	}
 }
+
 @-moz-document domain("youtube.com") {
+
 	/* AI ask button & vid summary */
 	ytd-menu-renderer #flexible-item-buttons,
 	#expandable-metadata {
 		display: none
 	}
+
 	/* the whole app itself */
 	ytd-app,
+
 	/* top bar; id changes on different pages */
 	#frosted-glass,
 	#background,
+
 	/* side bar */
 	#guide-content,
+
 	/* channel page */
 	#page-header-container,
 	#page-header,
@@ -31,6 +37,7 @@
 		background: var(--myBG) !important
 	}
 }
+
 @-moz-document domain("discord.com") {
 	/* top bar */
 	div:has(>[aria-label="Open Quick Switcher"]),
@@ -88,14 +95,18 @@
 		border-bottom: 1px solid var(--myAccent) !important
 	}
 }
+
 @-moz-document domain("google.com") {
+
 	/* AI overview & AI mode */
 	#Odp5De,
 	[jsname="xBNgKe"] {
 		display: none
 	}
 }
+
 @-moz-document domain("ecosia.org") {
+
 	/* ads */
 	[data-test-id="mainline-result-productAds"],
 	[data-test-id="mainline-result-aiOverview"],
