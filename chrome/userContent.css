@@ -9,6 +9,11 @@
 	#expandable-metadata {
 		display: none
 	}
+	ytd-app,
+	#frosted-glass,
+	#background {
+		background: #282433 !important
+	}
 }
 @-moz-document domain("discord.com") {
 	/* top bar */
