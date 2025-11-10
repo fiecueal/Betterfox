@@ -14,29 +14,57 @@
 	/* top bar */
 	div:has(>[aria-label="open quick switcher" i]),
 	[aria-label="servers sidebar" i],
+
 	/* behind & under user area */
 	div:has(>[aria-label="servers sidebar" i]),
 	div:has(>[aria-label="servers sidebar" i])::after,
+
 	/* server channels bar */
 	[aria-label$="(server)" i],
+
 	/* dm list bar */
 	[aria-label="private channels" i],
 	[aria-label="private channels" i]>*,
+
 	[aria-label="channel header" i],
+
 	/* shadow separator in chat title bar */
 	[aria-label="channel header" i]>div>div::after,
+
 	/* chat area */
 	main,
+
 	/* chat area bottom */
 	[class^="chatgradient" i],
+
 	/* server/group chat right bar */
 	main+div>aside>div,
+
 	/* dm right bar */
 	[class*="user-profile-sidebar" i],
+
 	/* users list item */
 	[role="listitem"] {
 		background: #282433 !important;
 		/*color: #eee9fc !important;*/
+	}
+
+	/* borders */
+	[class*="sidebarListRounded"],
+	[class*="page__"],
+	main+div,
+	[class*="user-profile-sidebar"] {
+		border-inline-start: 1px solid #938aad !important
+	}
+
+	[data-has-border],
+	[class*="sidebarListRounded"] {
+		border-top: 1px solid #938aad !important
+	}
+
+	[aria-label$="(server)"]>div>header,
+	[aria-label="Channel header"] {
+		border-bottom: 1px solid #938aad !important
 	}
 }
 @-moz-document domain("google.com") {
