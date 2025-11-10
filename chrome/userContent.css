@@ -1,3 +1,10 @@
+:root {
+	/* hardhacker colors https://github.com/hardhackerlabs/themes */
+	--myBG: #282433;
+	--myFG: #eee9fc;
+	--myAccent: #938aad
+}
+
 @-moz-document domain("messenger.com") {
 	[aria-label="Thread list"] {
 		order: 1 !important
@@ -50,8 +57,7 @@
 
 	/* users list item */
 	[role="listitem"] {
-		background: #282433 !important;
-		/*color: #eee9fc !important;*/
+		background: var(--myBG) !important
 	}
 
 	/* borders */
@@ -60,17 +66,17 @@
 	[class*="page__"],
 	main+div,
 	.user-profile-sidebar {
-		border-inline-start: 1px solid #938aad !important
+		border-inline-start: 1px solid var(--myAccent) !important
 	}
 
 	[data-has-border],
 	[class*="sidebarListRounded"] {
-		border-top: 1px solid #938aad !important
+		border-top: 1px solid var(--myAccent) !important
 	}
 
 	[aria-label$="(server)"]>div>header,
 	[aria-label="Channel header"] {
-		border-bottom: 1px solid #938aad !important
+		border-bottom: 1px solid var(--myAccent) !important
 	}
 }
 @-moz-document domain("google.com") {
