@@ -16,10 +16,19 @@
 	#expandable-metadata {
 		display: none
 	}
+	/* the whole app itself */
 	ytd-app,
+	/* top bar; id changes on different pages */
 	#frosted-glass,
-	#background {
-		background: #282433 !important
+	#background,
+	/* side bar */
+	#guide-content,
+	/* channel page */
+	#page-header-container,
+	#page-header,
+	#tabs-inner-container,
+	#chips-wrapper {
+		background: var(--myBG) !important
 	}
 }
 @-moz-document domain("discord.com") {
