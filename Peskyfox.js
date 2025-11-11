@@ -3,7 +3,7 @@
  * Peskyfox                                                                 *
  * "Aquila non capit muscas"                                                *
  * priority: remove annoyances                                              *
- * version: 142                                                             *
+ * version: 144                                                             *
  * url: https://github.com/yokoffing/Betterfox                              *
  * credit: Some prefs are reproduced and adapted from the arkenfox project  *
  * credit urL: https://github.com/arkenfox/user.js                          *
@@ -12,11 +12,6 @@
 /****************************************************************************
  * SECTION: MOZILLA UI                                                      *
 ****************************************************************************/
-
-// PREF: Mozilla VPN
-// [1] https://github.com/yokoffing/Betterfox/issues/169
-user_pref("browser.privatebrowsing.vpnpromourl", "");
-    //user_pref("browser.vpn_promo.enabled", false);
 
 // PREF: disable about:addons' Recommendations pane (uses Google Analytics)
 user_pref("extensions.getAddons.showPane", false); // HIDDEN
@@ -64,6 +59,9 @@ user_pref("browser.profiles.enabled", true);
 // [1] https://github.com/yokoffing/Betterfox/issues/320
 //user_pref("widget.gtk.non-native-titlebar-buttons.enabled", true);
 
+// PREF: disable search engine switcher in the URL bar [FF136+]
+//user_pref("browser.urlbar.scotchBonnet.enableOverride", false);
+
 /****************************************************************************
  * SECTION: THEME ADJUSTMENTS                                              *
 ****************************************************************************/
@@ -106,12 +104,15 @@ user_pref("browser.ml.enable", false);
 // PREF: AI chat
 user_pref("browser.ml.chat.enabled", false);
 
-// PREF: link previews
-//user_pref("browser.ml.linkPreview.enabled", false);
+// PREF: AI chatbot option in right click menu
+user_pref("browser.ml.chat.menu", false);
 
 // PREF: AI-enhanced tab groups
 // [1] https://support.mozilla.org/kb/how-use-ai-enhanced-tab-groups
-//user_pref("browser.tabs.groups.smart.enabled", false);
+user_pref("browser.tabs.groups.smart.enabled", false);
+
+// PREF: link previews
+user_pref("browser.ml.linkPreview.enabled", false);
 
 /****************************************************************************
  * SECTION: COOKIE BANNER HANDLING                                          *
@@ -200,7 +201,6 @@ user_pref("full-screen-api.warning.timeout", 0); // default=3000
 user_pref("browser.urlbar.suggest.engines", false);
     //user_pref("browser.urlbar.suggest.searches", false);
 //user_pref("browser.urlbar.quickactions.enabled", false);
-//user_pref("browser.urlbar.shortcuts.quickactions", false);
 //user_pref("browser.urlbar.suggest.weather", true); // DEFAULT [FF108]
     //user_pref("browser.urlbar.weather.ignoreVPN", false); // DEFAULT
 //user_pref("browser.urlbar.suggest.calculator", true); // [DEFAULT FF137+]
@@ -311,7 +311,6 @@ user_pref("browser.newtabpage.activity-stream.showSponsoredCheckboxes", false); 
 //user_pref("browser.newtabpage.activity-stream.feeds.section.highlights", false); // Recent Activity [DEFAULT]
       //user_pref("browser.newtabpage.activity-stream.section.highlights.includeBookmarks", false);
       //user_pref("browser.newtabpage.activity-stream.section.highlights.includeDownloads", false);
-      //user_pref("browser.newtabpage.activity-stream.section.highlights.includePocket", false);
       //user_pref("browser.newtabpage.activity-stream.section.highlights.includeVisited", false);
 //user_pref("browser.newtabpage.activity-stream.feeds.snippets", false); // [DEFAULT]
 
@@ -337,8 +336,9 @@ user_pref("browser.newtabpage.activity-stream.default.sites", "");
  * SECTION: POCKET                                                            *
 ******************************************************************************/
 
-// PREF: Disable built-in Pocket extension
-user_pref("extensions.pocket.enabled", false);
+// PREF: disable built-in Pocket extension
+// [1] https://support.mozilla.org/kb/future-of-pocket
+//user_pref("extensions.pocket.enabled", false); // DEFAULT
       //user_pref("extensions.pocket.api"," ");
       //user_pref("extensions.pocket.oAuthConsumerKey", " ");
       //user_pref("extensions.pocket.site", " ");
