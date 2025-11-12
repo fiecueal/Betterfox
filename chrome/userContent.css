@@ -75,6 +75,10 @@
 	/* chat area bottom */
 	main>div>[class^="chatGradient"],
 
+	/* friends list */
+	[aria-label="Friends"]>*,
+	#online-tab+div>aside,
+
 	/* server/group chat right bar */
 	main+div>aside>div,
 
