@@ -108,6 +108,7 @@
 	}
 
 	[aria-label$="(server)"]>div>header,
+	[aria-label="Private channels"] > :first-child,
 	[aria-label="Channel header"],
 	[aria-label="Friends"]>section {
 		border-bottom: 1px solid var(--myAccent) !important
