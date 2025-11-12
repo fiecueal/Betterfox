@@ -77,7 +77,7 @@
 
 	/* friends list */
 	[aria-label="Friends"]>*,
-	#online-tab+div>aside,
+	[role="tabpanel"]+div>aside,
 
 	/* server/group chat right bar */
 	main+div>aside>div,
@@ -95,18 +95,21 @@
 	[class*="sidebarListRounded"],
 	[class*="page__"],
 	main+div,
+	[role="tabpanel"]+div>aside>div,
 	.user-profile-sidebar {
 		border-inline-start: 1px solid var(--myAccent) !important
 	}
 
+	[class*="sidebarListRounded"],
 	[data-has-border],
-	[class*="sidebarListRounded"] {
+	main[aria-label="Friends"] {
 		border-top: 1px solid var(--myAccent) !important;
-		border-start-start-radius: 0
+		border-start-start-radius: 0 !important
 	}
 
 	[aria-label$="(server)"]>div>header,
-	[aria-label="Channel header"] {
+	[aria-label="Channel header"],
+	[aria-label="Friends"]>section {
 		border-bottom: 1px solid var(--myAccent) !important
 	}
 }
