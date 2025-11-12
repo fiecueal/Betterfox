@@ -43,6 +43,12 @@
 }
 
 @-moz-document domain("discord.com") {
+
+	/* ads */
+	.mask__0d616 {
+		display: none
+	}
+
 	/* top bar */
 	div:has(>[aria-label="Open Quick Switcher"]),
 	[aria-label="Servers sidebar"],
