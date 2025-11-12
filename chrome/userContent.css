@@ -9,6 +9,10 @@
 	[aria-label="Thread list"] {
 		order: 1 !important
 	}
+
+	body {
+		background: var(--myBG) !important
+	}
 }
 
 @-moz-document domain("youtube.com") {
