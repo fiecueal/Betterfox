@@ -42,10 +42,6 @@
 /* tool/extension icons */
 .toolbarbutton-1,
 .chromeclass-toolbar-additional,
-/*
- * pinned tabs remain in the same container as unpinned tabs
- * so messing with them borks their layout
- */
 .tabbrowser-tab {
   margin: 0 !important;
   padding: 0 !important;
