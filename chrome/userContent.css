@@ -2,7 +2,8 @@
 	/* hardhacker colors https://github.com/hardhackerlabs/themes */
 	--myBG: #282433;
 	--myFG: #eee9fc;
-	--myAccent: #938aad
+	--myAccent: #938aad;
+	--myAccent-bright: #e965a5
 }
 
 @-moz-document domain("messenger.com") {
@@ -133,6 +134,10 @@
 	[aria-label="Channel header"],
 	[aria-label="Friends"]>section {
 		border-bottom: 1px solid var(--myAccent) !important
+	}
+
+	#---new-messages-bar {
+		--divider-color: var(--myAccent-bright) !important
 	}
 }
 
