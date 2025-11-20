@@ -94,7 +94,7 @@
 	main,
 
 	/* chat area bottom */
-	main>div>[class^="chatGradient"],
+	main>div>[class*="chatGradientBase"],
 
 	/* friends list */
 	[aria-label="Friends"]>*,
