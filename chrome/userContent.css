@@ -57,10 +57,13 @@
 	}
 
 	/* left sidebar */
-	#guide,
+	#contentContainer,
 	ytd-mini-guide-renderer {
 		border-right: 1px solid var(--myAccent) !important;
-		border-top: 1px solid var(--myAccent) !important
+	}
+
+	#guide-inner-content {
+		border-top: 1px solid var(--myAccent) !important;
 	}
 }
 
