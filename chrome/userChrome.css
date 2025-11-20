@@ -1,5 +1,14 @@
+:root {
+  /* hardhacker colors https://github.com/hardhackerlabs/themes */
+  --myBG: #282433;
+  --myBG-bright: #3f3951;
+  --myFG: #eee9fc;
+  --myAccent: #938aad;
+  --myAccent-bright: #e965a5
+}
+
 /* given a reasonable screen width, place tabs & url bar next to each other */
-@media(min-width: 960px) and (orientation: landscape) {
+@media(orientation: landscape) {
 
   /* the whole top UI */
   #navigator-toolbox {
@@ -30,11 +39,6 @@
   }
 }
 
-* {
-  border: 0 !important;
-  border-radius: 0 !important;
-}
-
 #urlbar-container {
   --urlbar-margin-inline: 0;
 }
@@ -61,16 +65,29 @@
 toolbaritem,
 toolbarbutton,
 .tabbrowser-tab {
-  background: #282433 !important;
+  background: var(--myBG) !important;
 }
 
 .tabbrowser-tab[selected="true"] {
   >stack>vbox {
-    border: 1px solid #e965a5 !important;
-    background: #3f3951 !important
+    border: 1px solid var(--myAccent-bright) !important;
+    background: var(--myBG-bright) !important
   }
 
   label {
-    color: #e965a5 !important
+    color: var(--myAccent-bright) !important
   }
+}
+
+#navigator-toolbox {
+  border-bottom: 1px solid var(--myAccent) !important
+}
+
+#PersonalToolbar {
+  border-top: 1px solid var(--myAccent) !important
+}
+
+spacer[part="overflow-start-indicator"],
+spacer[part="overflow-end-indicator"] {
+  border-left: 1px solid var(--myAccent) !important;
 }

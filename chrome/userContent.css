@@ -40,6 +40,27 @@
 	#chips-wrapper {
 		background: var(--myBG) !important
 	}
+
+	/* sticky header */
+	#masthead-container,
+	#chips-wrapper,
+	/* channel page header */
+	#tabs-divider {
+		border-bottom: 1px solid var(--myAccent) !important
+	}
+
+	/* video page suggested videos */
+	#secondary.ytd-watch-flexy {
+		padding-left: 1rem !important;
+		border-left: 1px solid var(--myAccent) !important
+	}
+
+	/* left sidebar */
+	#guide,
+	ytd-mini-guide-renderer {
+		border-right: 1px solid var(--myAccent) !important;
+		border-top: 1px solid var(--myAccent) !important
+	}
 }
 
 @-moz-document domain("discord.com") {
@@ -108,7 +129,7 @@
 	}
 
 	[aria-label$="(server)"]>div>header,
-	[aria-label="Private channels"] > :first-child,
+	[aria-label="Private channels"]> :first-child,
 	[aria-label="Channel header"],
 	[aria-label="Friends"]>section {
 		border-bottom: 1px solid var(--myAccent) !important
