@@ -1,93 +1,114 @@
+@media(orientation: landscape) {
+  /* the whole top UI */
+  #navigator-toolbox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap
+  }
+
+  /* idk just hide it */
+  #toolbar-menubar { display: none }
+
+  /* tabs */
+  #TabsToolbar { flex-grow: 1 }
+
+  /* url/tools */
+  #nav-bar { order: -1; max-width: min-content }
+
+  /* bookmarks */
+  #PersonalToolbar {
+    width: 100%;
+    border-top: 1px solid var(--myAccent) !important
+  }
+}
+
 :root {
   /* hardhacker colors https://github.com/hardhackerlabs/themes */
   --myBG: #282433;
   --myBG-bright: #3f3951;
   --myFG: #eee9fc;
   --myAccent: #938aad;
-  --myAccent-bright: #e965a5
-}
+  --myAccent-bright: #e965a5;
 
-/* given a reasonable screen width, place tabs & url bar next to each other */
-@media(orientation: landscape) {
-
-  /* the whole top UI */
-  #navigator-toolbox {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  /* url/tools */
-  #nav-bar {
-    order: -1;
-    max-width: min-content;
-  }
+  /* top UI */
+  --toolbar-bgcolor: var(--myBG) !important;
+  --toolbar-color: var(--myFG) !important;
+  --chrome-content-separator-color: var(--myAccent) !important;     /* bottom border */
+  --toolbarbutton-icon-fill: var(--myAccent-bright) !important;     /* icons */
+  --toolbarbutton-hover-background: var(--myBG-bright) !important;  /* icon bg */
+  --toolbarbutton-active-background: var(--myBG-bright) !important;
 
   /* tabs */
-  #TabsToolbar {
-    flex-grow: 1;
-  }
+  --lwt-additional-images: none !important;            /* bg img like in alpenglow */
+  --lwt-accent-color: var(--myBG) !important;          /* window focused bg */
+  --lwt-accent-color-inactive: var(--myBG) !important; /* not focused bg */
+  --lwt-text-color: var(--myFG) !important;
+  /* focused tab */
+  --tab-selected-bgcolor: var(--myBG-bright) !important;
+  --tab-selected-textcolor: var(--myAccent-bright) !important;
+  --lwt-tab-line-color: var(--myAccent-bright) !important;
 
-  /* bookmarks */
-  #PersonalToolbar {
-    width: 100%;
-  }
+  /* dropdowns */
+  --arrowpanel-background: var(--myBG) !important;
+  --arrowpanel-color: var(--myFG) !important;
+  --arrowpanel-border-color: var(--myAccent) !important;
+  --button-background-color-hover: var(--myBG-bright) !important; /* hovered */
 
-  /* no clue what this is for */
-  #toolbar-menubar {
-    display: none;
-  }
+   /* search bar */
+  --urlbar-margin-inline: 0 !important;
+  --toolbar-field-background-color: var(--myBG-bright) !important;
+  --toolbar-field-color: var(--myAccent-bright) !important;
+  --toolbar-field-border-color: var(--myAccent) !important;
+  --toolbar-field-focus-border-color: var(--myAccent-bright) !important;
+  --focus-outline-color: var(--myAccent-bright) !important;
+  --lwt-toolbar-field-highlight: var(--myAccent-bright) !important; /* highlighted input */
+  /* when search dropdown active */
+  --toolbar-field-focus-background-color: var(--myBG-bright) !important;
+  --toolbar-field-focus-color: var(--myFG) !important;
+  --urlbarView-separator-color: var(--myAccent) !important; /* line between url and suggestions */
+  /* selected from url dropdown */
+  --urlbarView-highlight-background: var(--myBG) !important;
+  --urlbarView-highlight-color: var(--myAccent-bright) !important;
+  --urlbarView-hover-background: var(--myBG) !important; /* hovered by mouse + other buttons */
+
+  /* searchmode switcher */
+  --urlbar-box-bgcolor: var(--myBG) !important;
+  --button-background-color: var(--myBG) !important; /* focused */
+
+  /* sidebar */
+  --sidebar-background-color: var(--myBG) !important;
+  --sidebar-text-color: var(--myFG) !important;
+  --sidebar-border-color: var(--myAccent) !important;
+  --color-accent-primary: var(--myAccent-bright) !important; /* focused search box outline */
+
+  /* bg before site renders */
+  --tabpanel-background-color: var(--myBG) !important;
+
+  /* TODO cus idk what they do */
+  --newtab-background-color: green !important;
+  --newtab-text-primary-color: green !important;
+  --tabs-navbar-separator-color: green !important;
+  --toolbarbutton-icon-fill-attention: green  !important;
+  --tab-loading-fill: green !important;
+  --lwt-background-tab-separator-color: green !important;
+  --toolbarseparator-color: green !important;
+  --button-background-color-active: green !important;
+  --color-accent-primary-hover: green !important;
+  --color-accent-primary-active: green !important;
+  --button-text-color-primary: green !important;
+  --input-color: green !important;
+  --input-bgcolor: green !important;
+  --lwt-background-alignment: right top,left top,right top;
+  --lwt-background-tiling: no-repeat,no-repeat,repeat-x;
+  --urlbar-icon-fill-opacity: 0.72;
+  --tabs-navbar-separator-style: none;
+  --panel-separator-zap-gradient: linear-gradient(90deg, #9059FF 0%, #FF4AA2 52.08%, #FFBD4F 100%);
 }
 
-#urlbar-container {
-  --urlbar-margin-inline: 0;
-}
+* { border-radius: 0 !important }
 
-/* tool/extension icons */
-.toolbarbutton-1,
-.chromeclass-toolbar-additional,
-.tabbrowser-tab {
-  margin: 0 !important;
-  padding: 0 !important;
-}
+/* sidebar border/dragger */
+#sidebar-splitter { width: 1px !important }
 
-/* scroll buttons for when tabs overflow */
-#scrollbutton-up,
-#scrollbutton-down {
-  min-width: 2rem;
-}
-
-.bookmark-item {
-  margin: 0 !important;
-}
-
-#nav-bar-customization-target,
-toolbaritem,
-toolbarbutton,
-.tabbrowser-tab {
-  background: var(--myBG) !important;
-}
-
-.tabbrowser-tab[selected="true"] {
-  >stack>vbox {
-    border: 1px solid var(--myAccent-bright) !important;
-    background: var(--myBG-bright) !important
-  }
-
-  label {
-    color: var(--myAccent-bright) !important
-  }
-}
-
-#navigator-toolbox {
-  border-bottom: 1px solid var(--myAccent) !important
-}
-
-#PersonalToolbar {
-  border-top: 1px solid var(--myAccent) !important
-}
-
-spacer[part="overflow-start-indicator"],
-spacer[part="overflow-end-indicator"] {
-  border-left: 1px solid var(--myAccent) !important;
-}
+/* tab scroller border */
+#scrollbutton-up~spacer { border-left: 1px solid var(--myAccent) !important }
