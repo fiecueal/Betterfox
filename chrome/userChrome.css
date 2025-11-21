@@ -37,12 +37,32 @@
   --toolbarbutton-icon-fill: var(--myAccent-bright) !important;     /* icons */
   --toolbarbutton-hover-background: var(--myBG-bright) !important;  /* icon bg */
   --toolbarbutton-active-background: var(--myBG-bright) !important;
+  --text-color: var(--myFG) !important;                             /* so far only see it used in close all tabs popup */
+
+  /* buttons & other clickables - diff buttons use diff vars */
+  --button-border-color: var(--myAccent) !important;
+  --button-border-color-primary: var(--myAccent) !important;
+
+  --button-background-color: var(--myBG) !important;
+  --button-background-color-primary: var(--myBG) !important;
+  --button-background-color-hover: var(--myBG-bright) !important;
+  --button-background-color-active: var(--myBG-bright) !important;
+
+  --button-text-color: var(--myFG) !important;
+  --button-text-color-primary: var(--myFG) !important;
+  --button-text-color-hover: var(--myFG) !important;
+
+  --color-accent-primary: var(--myAccent-bright) !important;
+  --color-accent-primary-hover: var(--myBG-bright) !important;
+  --color-accent-primary-active: var(--myBG-bright) !important;
 
   /* tabs */
   --lwt-additional-images: none !important;            /* bg img like in alpenglow */
   --lwt-accent-color: var(--myBG) !important;          /* window focused bg */
   --lwt-accent-color-inactive: var(--myBG) !important; /* not focused bg */
   --lwt-text-color: var(--myFG) !important;
+  --tab-loading-fill: var(--myAccent) !important;      /* when site content loads */
+  --tabpanel-background-color: var(--myBG) !important; /* bg before site renders */
   /* focused tab */
   --tab-selected-bgcolor: var(--myBG-bright) !important;
   --tab-selected-textcolor: var(--myAccent-bright) !important;
@@ -52,7 +72,6 @@
   --arrowpanel-background: var(--myBG) !important;
   --arrowpanel-color: var(--myFG) !important;
   --arrowpanel-border-color: var(--myAccent) !important;
-  --button-background-color-hover: var(--myBG-bright) !important; /* hovered */
 
    /* search bar */
   --urlbar-margin-inline: 0 !important;
@@ -71,31 +90,24 @@
   --urlbarView-highlight-color: var(--myAccent-bright) !important;
   --urlbarView-hover-background: var(--myBG) !important; /* hovered by mouse + other buttons */
 
-  /* searchmode switcher */
-  --urlbar-box-bgcolor: var(--myBG) !important;
-  --button-background-color: var(--myBG) !important; /* focused */
-
   /* sidebar */
   --sidebar-background-color: var(--myBG) !important;
   --sidebar-text-color: var(--myFG) !important;
   --sidebar-border-color: var(--myAccent) !important;
-  --color-accent-primary: var(--myAccent-bright) !important; /* focused search box outline */
 
-  /* bg before site renders */
-  --tabpanel-background-color: var(--myBG) !important;
+  /* searchmode switcher */
+  --urlbar-box-bgcolor: var(--myBG) !important;
+
+  /* close all tabs popup */
+  --background-color-canvas: var(--myBG-bright) !important;
 
   /* TODO cus idk what they do */
   --newtab-background-color: green !important;
   --newtab-text-primary-color: green !important;
   --tabs-navbar-separator-color: green !important;
-  --toolbarbutton-icon-fill-attention: green  !important;
-  --tab-loading-fill: green !important;
+  --toolbarbutton-icon-fill-attention: green !important;
   --lwt-background-tab-separator-color: green !important;
   --toolbarseparator-color: green !important;
-  --button-background-color-active: green !important;
-  --color-accent-primary-hover: green !important;
-  --color-accent-primary-active: green !important;
-  --button-text-color-primary: green !important;
   --input-color: green !important;
   --input-bgcolor: green !important;
   --lwt-background-alignment: right top,left top,right top;
