@@ -101,6 +101,10 @@
   /* download icon */
   --toolbarbutton-icon-fill-attention: var(--myAccent-bright) !important;
 
+  /* bookmark input box */
+  --input-color:  var(--myFG) !important;
+  --input-bgcolor: var(--myBG-bright) !important;
+
   /* close all tabs popup */
   --background-color-canvas: var(--myBG-bright) !important;
 
@@ -110,8 +114,6 @@
   --tabs-navbar-separator-color: green !important;
   --lwt-background-tab-separator-color: green !important;
   --toolbarseparator-color: green !important;
-  --input-color: green !important;
-  --input-bgcolor: green !important;
   --lwt-background-alignment: right top,left top,right top;
   --lwt-background-tiling: no-repeat,no-repeat,repeat-x;
   --urlbar-icon-fill-opacity: 0.72;
