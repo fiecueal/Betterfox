@@ -137,3 +137,6 @@ toolbarbutton { padding: 0 !important }
 
 /* tab scroller border */
 #scrollbutton-up~spacer { border-left: 1px solid var(--myAccent) !important }
+
+/* tab volume toggle */
+.button-background { border: 0 !important }
