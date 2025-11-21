@@ -124,6 +124,14 @@
 * { border-radius: 0 !important }
 toolbarbutton { padding: 0 !important }
 
+#scrollbutton-up,
+#scrollbutton-down {
+  min-width: 2rem !important;
+  &:not([disabled]):hover {
+    background: var(--myBG-bright) !important
+  }
+}
+
 /* sidebar border/dragger */
 #sidebar-splitter { width: 1px !important }
 
