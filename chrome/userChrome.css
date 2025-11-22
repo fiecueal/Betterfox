@@ -1,4 +1,8 @@
-/* tested on FF 145.0 */
+/**
+ * tested on versions:
+ * 145.0
+ * 140.5.0esr
+ */
 @media(orientation: landscape) {
   /* the whole top UI */
   #navigator-toolbox {
