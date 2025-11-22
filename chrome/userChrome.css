@@ -27,6 +27,10 @@
   }
 }
 
+@media(orientation: portrait) {
+  #nav-bar { border-top: 1px solid var(--myAccent) !important }
+}
+
 :root {
   /* hardhacker colors https://github.com/hardhackerlabs/themes */
   --myBG: #282433;
