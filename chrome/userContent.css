@@ -42,6 +42,9 @@
 	#frosted-glass,
 	#background,
 
+	/* search dropdown */
+	.ytSearchboxComponentSuggestionsContainer,
+
 	/* wide view video background */
 	#full-bleed-container,
 
@@ -73,7 +76,14 @@
 		}
 	}
 
+	/* dropdowns */
 	ytd-multi-page-menu-renderer,
+	/* search dropdown */
+	.ytSearchboxComponentSuggestionsContainer,
+	/* video page playlist */
+	#playlist>#container,
+	/* video page chapters */
+	ytd-engagement-panel-section-list-renderer,
 	#description.ytd-watch-metadata {
 		border-radius: 0 !important;
 		border: 1px solid var(--myAccent) !important;
