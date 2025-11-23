@@ -62,10 +62,9 @@
 
 	/* sticky header */
 	#masthead-container,
-	#chips-wrapper,
 	/* channel page header */
 	#tabs-divider {
-		border-bottom: 1px solid var(--myAccent) !important
+		border-bottom: 1px solid var(--myAccent) !important;
 	}
 
 	ytd-watch-flexy[theater]:not([fullscreen])>#full-bleed-container {
