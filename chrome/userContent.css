@@ -16,7 +16,8 @@
 
 	/* AI ask button & vid summary */
 	ytd-menu-renderer #flexible-item-buttons,
-	#expandable-metadata {
+	#expandable-metadata,
+	#teaser-carousel {
 		display: none
 	}
 
