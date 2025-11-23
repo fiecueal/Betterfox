@@ -1,6 +1,7 @@
 :root {
 	/* hardhacker colors https://github.com/hardhackerlabs/themes */
 	--myBG: #282433;
+  --myBG-bright: #3f3951;
 	--myFG: #eee9fc;
 	--myAccent: #938aad;
 	--myAccent-bright: #e965a5
@@ -17,6 +18,21 @@
 	ytd-menu-renderer #flexible-item-buttons,
 	#expandable-metadata {
 		display: none
+	}
+
+	[light], [dark] {
+		--yt-spec-base-background: var(--myBG) !important;
+    --yt-spec-raised-background: var(--myBG) !important;
+		--yt-spec-menu-background: var(--myBG) !important;
+		--yt-spec-additive-background: #0000 !important;
+		--yt-spec-outline: var(--myAccent) !important;
+		--yt-spec-text-primary: var(--myFG) !important;
+	}
+
+	/* vid description */
+	ytd-watch-metadata {
+		--yt-saturated-base-background: var(--myBG) !important;
+    --yt-saturated-raised-background: var(--myBG-bright) !important;
 	}
 
 	/* the whole app itself */
@@ -55,6 +71,12 @@
 		video {
 			border-radius: 12px
 		}
+	}
+
+	ytd-multi-page-menu-renderer,
+	#description.ytd-watch-metadata {
+		border-radius: 0 !important;
+		border: 1px solid var(--myAccent) !important;
 	}
 
 	/* video page suggested videos */
