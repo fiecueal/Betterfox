@@ -1,7 +1,7 @@
 :root {
 	/* hardhacker colors https://github.com/hardhackerlabs/themes */
 	--myBG: #282433;
-  --myBG-bright: #3f3951;
+	--myBG-bright: #3f3951;
 	--myFG: #eee9fc;
 	--myAccent: #938aad;
 	--myAccent-bright: #e965a5
@@ -17,94 +17,75 @@
 	/* AI ask button & vid summary */
 	ytd-menu-renderer #flexible-item-buttons,
 	#expandable-metadata,
-	#teaser-carousel {
-		display: none
-	}
+	#teaser-carousel
+	{ display: none }
 
 	[light], [dark] {
 		--yt-spec-base-background: var(--myBG) !important;
-    --yt-spec-raised-background: var(--myBG) !important;
+		--yt-spec-raised-background: var(--myBG) !important;
 		--yt-spec-menu-background: var(--myBG) !important;
-		--yt-spec-additive-background: #0000 !important;
+		--yt-spec-additive-background: var(--myBG-bright) !important;
 		--yt-spec-outline: var(--myAccent) !important;
 		--yt-spec-text-primary: var(--myFG) !important;
+		--yt-frosted-glass-desktop: var(--myBG) !important;
 	}
 
 	/* vid description */
 	ytd-watch-metadata {
 		--yt-saturated-base-background: var(--myBG) !important;
-    --yt-saturated-raised-background: var(--myBG-bright) !important;
+		--yt-saturated-raised-background: var(--myBG-bright) !important;
 	}
 
-	/* the whole app itself */
-	ytd-app,
+	ytd-app,                                   /* html[dark] background is !important so hijack the tag below */
+	.ytSearchboxComponentInputBox,             /* search input */
+	.ytSearchboxComponentSuggestionsContainer, /* search dropdown */
+	#full-bleed-container,                     /* wide view video background */
+	.ytdMiniplayerInfoBarHost                  /* miniplayer */
+	{ background: var(--myBG) !important }
 
-	/* top bar; id changes on different pages */
-	#frosted-glass,
-	#background,
-
-	/* search dropdown */
-	.ytSearchboxComponentSuggestionsContainer,
-
-	/* wide view video background */
-	#full-bleed-container,
-
-	/* side bar */
-	#guide-content,
-
-	/* channel page */
-	#page-header-container,
-	#page-header,
-	#tabs-inner-container,
-	#chips-wrapper {
-		background: var(--myBG) !important
-	}
-
-	/* sticky header */
-	#masthead-container,
-	/* channel page header */
-	#tabs-divider {
-		border-bottom: 1px solid var(--myAccent) !important;
-	}
-
+	/* video page theater mode */
 	ytd-watch-flexy[theater]:not([fullscreen])>#full-bleed-container {
 		border-bottom: 1px solid var(--myAccent) !important;
 		padding: var(--ytd-margin-6x) 0 !important;
 
-		video {
-			border-radius: 12px
-		}
+		video { border-radius: 12px }
 	}
 
-	/* dropdowns */
-	ytd-multi-page-menu-renderer,
-	/* search dropdown */
-	.ytSearchboxComponentSuggestionsContainer,
-	/* video page playlist */
-	#playlist>#container,
-	/* video page chapters */
-	ytd-engagement-panel-section-list-renderer,
-	#description.ytd-watch-metadata {
+	/* video page suggested videos column */
+	#secondary.ytd-watch-flexy {
+		margin: 0 !important;
+		padding-left: var(--ytd-margin-6x) !important;
+		padding-top: var(--ytd-margin-6x) !important;
+		border-left: 1px solid var(--myAccent) !important
+	}
+
+	.ytSearchboxComponentInputBox,              /* search input */
+	.ytSearchboxComponentSearchButton,          /* search button */
+	.ytSearchboxComponentSuggestionsContainer,  /* search dropdown */
+	ytd-multi-page-menu-renderer,               /* dropdowns */
+	ytd-menu-popup-renderer,                    /* video options dropdown */
+	#description.ytd-watch-metadata,            /* video description */
+	#playlist>#container,                       /* video page playlist */
+	ytd-engagement-panel-section-list-renderer, /* video page chapters */
+	ytd-live-chat-frame#chat,                   /* live chat replay */
+	.ytdMiniplayerComponentContent,             /* miniplayer */
+	ytd-backstage-post-renderer                 /* post page */
+	{
 		border-radius: 0 !important;
 		border: 1px solid var(--myAccent) !important;
 	}
 
-	/* video page suggested videos */
-	#secondary.ytd-watch-flexy {
-		margin: 0 !important;
-		padding-left: 1rem !important;
-		border-left: 1px solid var(--myAccent) !important
-	}
+	/* search input */
+	.ytSearchboxComponentInputBox { border-right: 0 !important }
 
-	/* left sidebar */
-	#contentContainer,
-	ytd-mini-guide-renderer {
-		border-right: 1px solid var(--myAccent) !important;
-	}
+	/* header */
+	#masthead-container { border-bottom: 1px solid var(--myAccent) !important }
 
-	#guide-inner-content {
-		border-top: 1px solid var(--myAccent) !important;
-	}
+	/* sidebar full, collapsed */
+	#contentContainer, ytd-mini-guide-renderer { border-right: 1px solid var(--myAccent) !important }
+
+  /* sidebar header */
+	#guide-inner-content { border-top: 1px solid var(--myAccent) !important }
 }
 
 @-moz-document domain("discord.com") {
