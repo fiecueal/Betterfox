@@ -67,7 +67,8 @@
 	#description.ytd-watch-metadata,            /* video description */
 	#playlist>#container,                       /* video page playlist */
 	ytd-engagement-panel-section-list-renderer, /* video page chapters */
-	ytd-live-chat-frame#chat,                   /* live chat replay */
+	ytd-live-chat-frame#chat:not([collapsed]),  /* live chat replay */
+	[aria-label="Show chat replay"],            /* live chat replay collapsed */
 	.ytdMiniplayerComponentContent,             /* miniplayer */
 	ytd-backstage-post-renderer                 /* post page */
 	{
