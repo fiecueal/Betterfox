@@ -95,74 +95,50 @@
 		display: none
 	}
 
-	/* top bar */
-	div:has(>[aria-label="Open Quick Switcher"]),
-	[aria-label="Servers sidebar"],
+	.theme-light, .theme-dark, .theme-darker, .theme-midnight {
+		--background-base-low: var(--myBG) !important;
+		--background-base-lower: var(--myBG) !important;
+		--background-base-lowest: var(--myBG) !important;
+		--background-surface-high: var(--myBG) !important;
+		--background-surface-higher: var(--myBG) !important;
+		--background-surface-highest: var(--myBG) !important;
 
-	/* behind & under user area */
-	div:has(>[aria-label="Servers sidebar"]),
-	div:has(>[aria-label="Servers sidebar"])::after,
+		--background-modifier-hover: var(--myBG-bright) !important;
+		--background-modifier-selected: var(--myBG-bright) !important;
+		--user-profile-overlay-background: var(--myBG-bright) !important;
+		--background-code: var(--myBG-bright) !important;
+		--chat-background-default: var(--myBG-bright) !important;
 
-	/* server channels bar */
-	[aria-label$="(server)"],
+		--border-normal: var(--myAccent) !important;
+		--border-faint: var(--myAccent) !important;
+		--border-subtle: var(--myAccent) !important;
+		--divider-subtle: var(--myAccent) !important;
+		--app-border-frame: var(--myAccent) !important;
+		--user-profile-border: var(--myAccent) !important;
+		--input-border: var(--myAccent) !important;
+		--input-border-default: var(--myAccent) !important;
 
-	/* dm list bar */
-	[aria-label="Private channels"],
-	[aria-label="Private channels"]>*,
-
-	[aria-label="Channel header"],
-
-	/* shadow separator in chat title bar */
-	[aria-label="Channel header"]>div>div::after,
-
-	/* chat area */
-	main,
-
-	/* chat area bottom */
-	main>div>[class*="chatGradientBase"],
-
-	/* friends list */
-	[aria-label="Friends"]>*,
-	[role="tabpanel"]+div>aside,
-
-	/* server/group chat right bar */
-	main+div>aside>div,
-
-	/* dm right bar */
-	.user-profile-sidebar,
-
-	/* users list item */
-	[role="listitem"] {
-		background: var(--myBG) !important
+		--radius-xs: 0 !important;
+		--radius-sm: 0 !important;
+		--radius-md: 0 !important;
+		--radius-lg: 0 !important
 	}
 
-	/* borders */
-	/* verticals */
-	[class*="sidebarListRounded"],
-	[class*="page__"],
-	main+div,
-	[role="tabpanel"]+div>aside>div,
-	.user-profile-sidebar {
-		border-inline-start: 1px solid var(--myAccent) !important
-	}
+	#---new-messages-bar { --divider-color: var(--myAccent-bright) !important }
 
-	[class*="sidebarListRounded"],
-	[data-has-border],
-	main[aria-label="Friends"] {
-		border-top: 1px solid var(--myAccent) !important;
-		border-start-start-radius: 0 !important
-	}
+	[aria-roledescription="Message"] div[id^="message-content"] *,     /* code blocks, images */
+	[aria-roledescription="Message"] div[id^="message-accessories"] *, /* url previews */
+	#online-tab+div>aside>div>div>[class*="itemCard"]                  /* active friends */
+	{ border-radius: 0 !important }
 
-	[aria-label$="(server)"]>div>header,
-	[aria-label="Private channels"]> :first-child,
-	[aria-label="Channel header"],
-	[aria-label="Friends"]>section {
-		border-bottom: 1px solid var(--myAccent) !important
-	}
+	div[data-popout-animating] div[class*="menuOverlay"], /* user profile popup buttons */
+	aside[aria-labelledby] [class*="overlay"]             /* dm chat sidebar buttons */
+	{ border: 1px solid var(--myAccent) !important }
 
-	#---new-messages-bar {
-		--divider-color: var(--myAccent-bright) !important
-	}
+	div[class*="page__"],                    /* main area */
+	.user-profile-sidebar,                   /* dm right sidebar */
+	[aria-roledescription="Message"] article /* embedded link preview */
+	{ border-inline-start: 1px solid var(--myAccent) !important }
 }
 
 @-moz-document domain("google.com") {
