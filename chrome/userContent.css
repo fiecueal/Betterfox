@@ -98,6 +98,13 @@
 
 	:root {
 		--custom-emoji-picker-border-radius: 0 !important;
+		--custom-base-tile-border-radius: 0 !important
+	}
+
+	 /* voice chat main background */
+	.visual-refresh {
+		--black: var(--myBG) !important;
+		--primary-630: var(--myBG) !important
 	}
 
 	.theme-light, .theme-dark, .theme-darker, .theme-midnight {
