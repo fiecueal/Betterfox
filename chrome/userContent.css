@@ -35,6 +35,9 @@
 		--yt-saturated-raised-background: var(--myBG-bright) !important;
 	}
 
+	/* active video in video queue */
+	#playlist { --yt-lightsource-section2-color: var(--myBG-bright) !important }
+
 	ytd-app,                                   /* html[dark] background is !important so hijack the tag below */
 	.ytSearchboxComponentInputBox,             /* search input */
 	.ytSearchboxComponentSuggestionsContainer, /* search dropdown */
