@@ -13,7 +13,6 @@
 }
 
 @-moz-document domain("youtube.com") {
-
 	/* AI ask button & vid summary */
 	ytd-menu-renderer #flexible-item-buttons,
 	#expandable-metadata,
@@ -90,11 +89,7 @@
 }
 
 @-moz-document domain("discord.com") {
-
-	/* ads */
-	.mask__0d616 {
-		display: none
-	}
+	.mask__0d616 { display: none } /* ads */
 
 	:root {
 		--custom-emoji-picker-border-radius: 0 !important;
@@ -169,21 +164,14 @@
 }
 
 @-moz-document domain("google.com") {
-
-	/* AI overview & AI mode */
-	#Odp5De,
-	[jsname="xBNgKe"] {
-		display: none
-	}
+	#Odp5De, [jsname="xBNgKe"] { display: none } /* AI overview & AI mode */
 }
 
 @-moz-document domain("ecosia.org") {
-
 	/* ads */
 	[data-test-id="mainline-result-productAds"],
 	[data-test-id="mainline-result-aiOverview"],
 	[data-test-id="sidebar-result-ad"],
-	[data-test-id="ad-text-result"] {
-		display: none !important
-	}
+	[data-test-id="ad-text-result"]
+	{ display: none !important }
 }
