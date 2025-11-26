@@ -96,6 +96,10 @@
 		display: none
 	}
 
+	:root {
+		--custom-emoji-picker-border-radius: 0 !important;
+	}
+
 	.theme-light, .theme-dark, .theme-darker, .theme-midnight {
 		--background-base-low: var(--myBG) !important;
 		--background-base-lower: var(--myBG) !important;
@@ -125,13 +129,21 @@
 		--radius-lg: 0 !important
 	}
 
+	/* url preview */
+	div[aria-roledescription="Message"] article { background: var(--myBG-bright) !important }
+
 	#---new-messages-bar { --divider-color: var(--myAccent-bright) !important }
 
-	[aria-roledescription="Message"] div[id^="message-content"] *,     /* code blocks, images */
-	[aria-roledescription="Message"] div[id^="message-accessories"] *, /* url previews */
-	#online-tab+div>aside>div>div>[class*="itemCard"]                  /* active friends */
+  div[aria-label="Server Actions"],                                     /* left column right click */
+	div[aria-label="Message Actions"],                                    /* chat area right click */
+	div[aria-label="User Settings Actions"],                              /* voice chat user right click */
+	div[aria-label="Message Actions"]>div,                                /* message actions */
+	div[aria-roledescription="Message"] code,                             /* code blocks */
+	div[aria-roledescription="Message"] div[id^="message-accessories"] *, /* images, url previews */
+	#online-tab+div>aside>div>div>[class*="itemCard"]                     /* active friends */
 	{ border-radius: 0 !important }
 
+  #emoji-picker-tab-panel[aria-modal],                  /* add reaction to message popup */
 	div[data-popout-animating] div[class*="menuOverlay"], /* user profile popup buttons */
 	aside[aria-labelledby] [class*="overlay"]             /* dm chat sidebar buttons */
 	{ border: 1px solid var(--myAccent) !important }
