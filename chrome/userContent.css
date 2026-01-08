@@ -19,20 +19,22 @@
 	#teaser-carousel
 	{ display: none }
 
-	[light], [dark] {
+	html, [light], [dark] {
 		--yt-spec-base-background: var(--myBG) !important;
 		--yt-spec-raised-background: var(--myBG) !important;
 		--yt-spec-menu-background: var(--myBG) !important;
 		--yt-spec-additive-background: var(--myBG-bright) !important;
 		--yt-spec-outline: var(--myAccent) !important;
 		--yt-spec-text-primary: var(--myFG) !important;
-		--yt-frosted-glass-desktop: var(--myBG) !important;
+		--yt-frosted-glass-desktop: var(--myBG) !important
 	}
 
 	/* vid description */
 	ytd-watch-metadata {
+		--yt-saturated-text-primary: var(--myAccent-bright) !important;
+		--yt-saturated-text-secondary: var(--myAccent-bright) !important;
 		--yt-saturated-base-background: var(--myBG) !important;
-		--yt-saturated-raised-background: var(--myBG-bright) !important;
+		--yt-saturated-raised-background: var(--myBG-bright) !important
 	}
 
 	/* active video in video queue */
