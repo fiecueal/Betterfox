@@ -99,12 +99,14 @@
 	:root {
 		--custom-emoji-picker-border-radius: 0 !important;
 		--custom-base-tile-border-radius: 0 !important
-	}
 
-	 /* voice chat main background */
-	.visual-refresh {
 		--black: var(--myBG) !important;
-		--primary-630: var(--myBG) !important
+		--white: var(--myFG) !important;
+
+		--primary-630: var(--myBG) !important;
+		--brand-460: var(--myAccent-bright) !important;
+		--brand-500: var(--myAccent-bright) !important;
+		--brand-560: var(--myAccent-bright) !important;
 	}
 
 	.theme-light, .theme-dark, .theme-darker, .theme-midnight {
@@ -115,17 +117,23 @@
 		--background-surface-higher: var(--myBG) !important;
 		--background-surface-highest: var(--myBG) !important;
 
+		--background-mod-subtle: var(--myBG-bright) !important;
 		--background-modifier-hover: var(--myBG-bright) !important;
 		--background-modifier-selected: var(--myBG-bright) !important;
 		--user-profile-overlay-background: var(--myBG-bright) !important;
 		--background-code: var(--myBG-bright) !important;
 		--chat-background-default: var(--myBG-bright) !important;
+		--message-reacted-background: var(--myBG-bright) !important;
+
+		--blurple-50: var(--myAccent-bright) !important; /* misc accents & icons */
 
 		--border-normal: var(--myAccent) !important;
 		--border-faint: var(--myAccent) !important;
 		--border-subtle: var(--myAccent) !important;
+		--border-muted: var(--myAccent) !important;
 		--divider-subtle: var(--myAccent) !important;
 		--app-border-frame: var(--myAccent) !important;
+		--app-frame-border: var(--myAccent) !important;
 		--user-profile-border: var(--myAccent) !important;
 		--input-border: var(--myAccent) !important;
 		--input-border-default: var(--myAccent) !important;
@@ -135,6 +143,9 @@
 		--radius-md: 0 !important;
 		--radius-lg: 0 !important
 	}
+
+	/* channels/dms & main chat divider*/
+	div[aria-label="Resize Sidebar"] { border-right: 1px solid var(--myAccent) !important }
 
 	/* voice chat top/bottom gradient */
 	div[class*="gradientContainer"] { background: none !important }
@@ -154,7 +165,8 @@
 	div[aria-label="Message Actions"]>div,                                /* message actions */
 	div[aria-roledescription="Message"] code,                             /* code blocks */
 	div[aria-roledescription="Message"] div[id^="message-accessories"] *, /* images, url previews */
-	#online-tab+div>aside>div>div>[class*="itemCard"]                     /* active friends */
+	#online-tab+div>aside>div>div>[class*="itemCard"],                    /* active friends */
+	label[data-toggleable-component]>div                                  /* checkbox */
 	{ border-radius: 0 !important }
 
   #emoji-picker-tab-panel[aria-modal],                  /* add reaction to message popup */
