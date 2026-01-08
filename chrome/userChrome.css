@@ -1,6 +1,6 @@
 /**
  * tested on versions:
- * 145.0
+ * 146.0.1
  * 140.5.0esr
  */
 @media(orientation: landscape) {
@@ -66,6 +66,7 @@
   --color-accent-primary-active: var(--myBG-bright) !important;
 
   /* tabs */
+  --toolbox-bgcolor: var(--myBG) !important;           /* tabs row bg */
   --lwt-additional-images: none !important;            /* bg img like in alpenglow */
   --lwt-accent-color: var(--myBG) !important;          /* window focused bg */
   --lwt-accent-color-inactive: var(--myBG) !important; /* not focused bg */
