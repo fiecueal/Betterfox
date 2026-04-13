@@ -16,7 +16,8 @@
 	/* AI ask button & vid summary */
 	ytd-menu-renderer #flexible-item-buttons,
 	#expandable-metadata,
-	#teaser-carousel
+	#teaser-carousel,
+	#video-summary
 	{ display: none }
 
 	html, [light], [dark] {
@@ -26,7 +27,10 @@
 		--yt-spec-additive-background: var(--myBG-bright) !important;
 		--yt-spec-outline: var(--myAccent) !important;
 		--yt-spec-text-primary: var(--myFG) !important;
-		--yt-frosted-glass-desktop: var(--myBG) !important
+		--yt-spec-frosted-glass-desktop: var(--myBG) !important;
+		--yt-sys-color-baseline--base-background: var(--myBG) !important;
+		--yt-sys-color-baseline--raised-background: var(--myBG) !important;
+		--yt-sys-color-baseline--menu-background: var(--myBG) !important
 	}
 
 	/* vid description */
@@ -70,7 +74,8 @@
 	ytd-menu-popup-renderer,                    /* video options dropdown */
 	#description.ytd-watch-metadata,            /* video description */
 	#playlist>#container,                       /* video page playlist */
-	ytd-engagement-panel-section-list-renderer, /* video page chapters */
+	ytd-engagement-panel-section-list-renderer:not([shorts-panel]), /* video page chapters */
+	.anchored-panel.ytd-shorts,                 /* shorts comment section */
 	ytd-live-chat-frame#chat:not([collapsed]),  /* live chat replay */
 	[aria-label="Show chat replay"],            /* live chat replay collapsed */
 	.ytdMiniplayerComponentContent,             /* miniplayer */
@@ -89,7 +94,7 @@
 	/* sidebar full, collapsed */
 	#contentContainer, ytd-mini-guide-renderer { border-right: 1px solid var(--myAccent) !important }
 
-  /* sidebar header */
+	/* sidebar header */
 	#guide-inner-content { border-top: 1px solid var(--myAccent) !important }
 }
 
@@ -145,7 +150,7 @@
 	}
 
 	/* channels/dms & main chat divider*/
-	div[aria-label="Resize Sidebar"] { border-right: 1px solid var(--myAccent) !important }
+/* 	div[aria-label="Resize Sidebar"] { border-right: 1px solid var(--myAccent) !important } */
 
 	/* voice chat top/bottom gradient */
 	div[class*="gradientContainer"] { background: none !important }
@@ -156,7 +161,7 @@
 	#---new-messages-bar { --divider-color: var(--myAccent-bright) !important }
 
 	svg,
-  div[aria-label="Server Actions"],        /* left column right click */
+	div[aria-label="Server Actions"],        /* left column right click */
 	div[aria-label="Message Actions"],       /* chat area right click */
 	div[aria-label="User Settings Actions"], /* voice chat user right click */
 	#stream-context,                         /* voice chat stream right click */
@@ -169,7 +174,7 @@
 	label[data-toggleable-component]>div                                  /* checkbox */
 	{ border-radius: 0 !important }
 
-  #emoji-picker-tab-panel[aria-modal],                  /* add reaction to message popup */
+	#emoji-picker-tab-panel[aria-modal],                  /* add reaction to message popup */
 	div[data-popout-animating] div[class*="menuOverlay"], /* user profile popup buttons */
 	aside[aria-labelledby] [class*="overlay"]             /* dm chat sidebar buttons */
 	{ border: 1px solid var(--myAccent) !important }
