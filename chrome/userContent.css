@@ -190,11 +190,3 @@
 	#Odp5De, [jsname="xBNgKe"] { display: none } /* AI overview & AI mode */
 }
 
-@-moz-document domain("ecosia.org") {
-	/* ads */
-	[data-test-id="mainline-result-productAds"],
-	[data-test-id="mainline-result-aiOverview"],
-	[data-test-id="sidebar-result-ad"],
-	[data-test-id="ad-text-result"]
-	{ display: none !important }
-}
