@@ -30,7 +30,8 @@
 		--yt-spec-frosted-glass-desktop: var(--myBG) !important;
 		--yt-sys-color-baseline--base-background: var(--myBG) !important;
 		--yt-sys-color-baseline--raised-background: var(--myBG) !important;
-		--yt-sys-color-baseline--menu-background: var(--myBG) !important
+		--yt-sys-color-baseline--menu-background: var(--myBG) !important;
+		--yt-sys-color-baseline--frosted-glass-desktop: var(--myBG) !important
 	}
 
 	/* vid description */
