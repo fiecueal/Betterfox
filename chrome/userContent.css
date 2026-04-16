@@ -9,6 +9,7 @@
 
 @-moz-document domain("messenger.com") {
 	[aria-label="Thread list"] { order: 1 !important }
+	* { --messenger-card-background: var(--myBG) !important }
 	body { background: var(--myBG) !important }
 }
 
@@ -46,6 +47,7 @@
 	#playlist { --yt-lightsource-section2-color: var(--myBG-bright) !important }
 
 	ytd-app,                                   /* html[dark] background is !important so hijack the tag below */
+	#background.ytd-masthead,                  /* header when scrolled down */
 	.ytSearchboxComponentInputBox,             /* search input */
 	.ytSearchboxComponentSuggestionsContainer, /* search dropdown */
 	#full-bleed-container,                     /* wide view video background */
