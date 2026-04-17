@@ -90,7 +90,7 @@
 	{ border-radius: 0 !important }
 
 	#masthead,                      /* header */
-	#header.ytd-rich-grid-renderer, /* main page second header */
+	#chips-wrapper,                 /* home page second header */
 	#contentContainer #header,      /* sidebar header */
 	#full-bleed-container           /* wide view video */
 	{ border-bottom: 1px solid var(--myAccent) !important }
