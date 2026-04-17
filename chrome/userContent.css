@@ -18,8 +18,9 @@
 	ytd-menu-renderer #flexible-item-buttons,
 	#expandable-metadata,
 	#teaser-carousel,
-	#video-summary
-	{ display: none }
+	#video-summary,
+	#dismissible.ytd-inline-survey-renderer
+	{ display: none !important }
 
 	html, [light], [dark] {
 		--yt-spec-base-background: var(--myBG) !important;
@@ -33,6 +34,14 @@
 		--yt-sys-color-baseline--raised-background: var(--myBG) !important;
 		--yt-sys-color-baseline--menu-background: var(--myBG) !important;
 		--yt-sys-color-baseline--frosted-glass-desktop: var(--myBG) !important
+		--paper-listbox-background-color: var(--myBG) !important;
+		/* youtube decided to be evil i guess */
+		--t3e41d7b17b187f69: var(--myBG) !important;
+		--ta889dfda9605a358: var(--myBG) !important;
+		--t518e925f61bdcb91: var(--myBG) !important;
+		--t08a7c6c176cbc5c2: var(--myBG) !important;
+		--tf3fc855af2285f5f: var(--myAccent) !important;
+
 	}
 
 	/* vid description */
@@ -43,6 +52,15 @@
 		--yt-saturated-raised-background: var(--myBG-bright) !important
 	}
 
+	ytd-shorts {
+		--ytd-anchored-panel-background-color: var(--myBG) !important;
+	}
+
+	yt-dropdown-menu {
+		--paper-menu-button-content-border-radius: 0 !important
+	}
+
+
 	/* active video in video queue */
 	#playlist { --yt-lightsource-section2-color: var(--myBG-bright) !important }
 
@@ -50,8 +68,12 @@
 	#background.ytd-masthead,                  /* header when scrolled down */
 	.ytSearchboxComponentInputBox,             /* search input */
 	.ytSearchboxComponentSuggestionsContainer, /* search dropdown */
+	ytd-multi-page-menu-renderer,              /* notifs dropdown */
+	ytd-simple-menu-header-renderer,           /* notifs dropdown header*/
 	#full-bleed-container,                     /* wide view video background */
-	.ytdMiniplayerInfoBarHost                  /* miniplayer */
+	.ytdMiniplayerInfoBarHost,                 /* miniplayer */
+	#content.ytd-engagement-panel-section-list-renderer, /* shorts comment section*/
+	tp-yt-paper-listbox.yt-dropdown-menu       /* shorts comment section dropdown */
 	{ background: var(--myBG) !important }
 
 	/* video page theater mode */
@@ -82,7 +104,9 @@
 	ytd-live-chat-frame#chat:not([collapsed]),  /* live chat replay */
 	[aria-label="Show chat replay"],            /* live chat replay collapsed */
 	.ytdMiniplayerComponentContent,             /* miniplayer */
-	ytd-backstage-post-renderer                 /* post page */
+	ytd-backstage-post-renderer,                /* post page */
+	ytd-post-renderer[rounded-container],       /* posts */
+	#menu.yt-dropdown-menu                      /* shorts comment section dropdown */
 	{
 		border-radius: 0 !important;
 		border: 1px solid var(--myAccent) !important;
