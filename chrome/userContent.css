@@ -105,7 +105,7 @@
 	/* main video sidebar */
 	#secondary.ytd-watch-flexy { padding-left: var(--ytd-watch-flexy-horizontal-page-margin) !important }
 
-	#full-bleed-container { padding: var(--ytd-margin-3x) 0 !important }
+	ytd-watch-flexy[theater] #full-bleed-container { padding: var(--ytd-margin-3x) 0 !important }
 }
 
 @-moz-document domain("discord.com") {
