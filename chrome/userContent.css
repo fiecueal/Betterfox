@@ -15,12 +15,10 @@
 }
 
 @-moz-document domain("youtube.com") {
-	/* AI ask button & vid summary */
-	ytd-menu-renderer #flexible-item-buttons,
-	#expandable-metadata,
-	#teaser-carousel,
-	#video-summary,
-	#dismissible.ytd-inline-survey-renderer
+	#expandable-metadata,        /* search result ai summary */
+	.you-chat-entrypoint-button, /* vid ai ask button */
+	#video-summary,              /* vid ai summary */
+	yt-video-description-youchat-section-view-model /* vid ai chatbot */
 	{ display: none !important }
 
 	html, [dark] {
@@ -89,10 +87,10 @@
 	.ytp-miniplayer-scrim                       /* miniplayer hover */
 	{ border-radius: 0 !important }
 
-	#masthead,                      /* header */
-	#chips-wrapper,                 /* home page second header */
-	#contentContainer #header,      /* sidebar header */
-	#full-bleed-container           /* wide view video */
+	#masthead,                 /* header */
+	#chips-wrapper,            /* home page second header */
+	#contentContainer #header, /* sidebar header */
+	#full-bleed-container      /* wide view video */
 	{ border-bottom: 1px solid var(--myAccent) !important }
 
 	#contentContainer,       /* full sidebar */
