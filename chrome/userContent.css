@@ -52,7 +52,8 @@
 
 	ytd-app, /* base bg for everything */
 	.ytSearchboxComponentInputBox,
-	#full-bleed-container /* wide view video background */
+	ytd-watch-flexy[theater]:not([fullscreen]) #full-bleed-container
+	/* wide view video background */
 	{ background: var(--myBG) !important }
 
 	.ytSearchboxComponentInputBox,
@@ -103,7 +104,7 @@
 	/* main video sidebar */
 	#secondary.ytd-watch-flexy { padding-left: var(--ytd-watch-flexy-horizontal-page-margin) !important }
 
-	ytd-watch-flexy[theater] #full-bleed-container { padding: var(--ytd-margin-3x) 0 !important }
+	ytd-watch-flexy[theater]:not([fullscreen]) #full-bleed-container { padding: var(--ytd-margin-3x) 0 !important }
 }
 
 @-moz-document domain("discord.com") {
